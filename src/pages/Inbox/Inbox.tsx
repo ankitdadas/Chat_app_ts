@@ -14,8 +14,6 @@ const Inbox = (props: any) => {
     const [conversationList, setConversationList] = useState(sampleAppContext || []);
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
 
-
-   
     const updateBlockStatus: any = () => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
         conversationList[tempConversionIndex].block = true;
@@ -32,6 +30,12 @@ const Inbox = (props: any) => {
         setConversationList([...tempConversionList]);
         if (tempConversionList.length > 0)
             setSelectedUser(conversationList[selectedIndx])
+    }
+    const updateExpanded: any = (indx:any, contactIndx:any, expanded:boolean) => {
+        const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
+        conversationList[tempConversionIndex].contacts[contactIndx].contact.thirdPartyDetails[indx].expanded = expanded;
+        setConversationList([...conversationList]);
+       
     }
     return (
         <InboxContext.Provider value={conversationList}>
@@ -62,7 +66,7 @@ const Inbox = (props: any) => {
                             variant="persistent"
                             anchor="right"
                         >
-                            <Contacts />
+                            <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
                         </Drawer>
                     )
                 }

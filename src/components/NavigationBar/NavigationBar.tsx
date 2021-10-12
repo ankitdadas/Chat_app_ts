@@ -1,4 +1,7 @@
-import { List, ListItem, Drawer, Toolbar, Box } from "@mui/material";
+import {
+    List, ListItem, Drawer, Toolbar, Box,
+    Tooltip
+} from "@mui/material";
 import "./NavigationBar.scss";
 import { NavLink } from 'react-router-dom';
 import {
@@ -29,35 +32,47 @@ function NavigationBar() {
             >
                 <List className="sideNavigation">
                     <ListItem>
-                        <NavLink to={"/inbox"} exact isActive={() => ['/', '/inbox'].includes(pathname)} activeClassName="selected">
-                            <InboxOutlined />
-                        </NavLink>
+                        <Tooltip title="Inbox" placement="right-start">
+                            <NavLink to={"/inbox"} exact isActive={() => ['/', '/inbox'].includes(pathname)} activeClassName="selected">
+                                <InboxOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
                     <ListItem>
-                        <NavLink to={"/campaigns"} exact activeClassName="selected">
-                            <PodcastsOutlined />
-                        </NavLink>
+                        <Tooltip title="Campaigns" placement="right-start">
+                            <NavLink to={"/campaigns"} exact activeClassName="selected">
+                                <PodcastsOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
                     <ListItem>
-                        <NavLink to={"/Contacts"} exact activeClassName="selected">
-                            <GroupOutlined />
-                        </NavLink>
+                        <Tooltip title="Contacts" placement="right-start">
+                            <NavLink to={"/Contacts"} exact activeClassName="selected">
+                                <GroupOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
 
                     <ListItem>
-                        <NavLink to={"/Templates"} exact activeClassName="selected">
-                            <TextSnippetOutlined />
-                        </NavLink>
+                        <Tooltip title="Templates" placement="right-start">
+                            <NavLink to={"/Templates"} exact activeClassName="selected">
+                                <TextSnippetOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
                     <ListItem>
-                        <NavLink to={"/Tools"} exact activeClassName="selected">
-                            <TimelineOutlined />
-                        </NavLink>
+                        <Tooltip title="Tools" placement="right-start">
+                            <NavLink to={"/Tools"} exact activeClassName="selected">
+                                <TimelineOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
                     <ListItem>
-                        <NavLink to={"/Featurerequests"} exact activeClassName="selected">
-                            <ConstructionOutlined />
-                        </NavLink>
+                        <Tooltip title="Feature Requests" placement="right-start">
+                            <NavLink to={"/Featurerequests"} exact activeClassName="selected">
+                                <ConstructionOutlined />
+                            </NavLink>
+                        </Tooltip>
                     </ListItem>
                 </List>
             </Toolbar>
@@ -71,13 +86,14 @@ function NavigationBar() {
 
                 <List>
                     <ListItem>
-
-                        <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
-
+                        <Tooltip title="Status" placement="right-start">
+                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
+                        </Tooltip>
                     </ListItem>
                     <ListItem>
-                        <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
-
+                        <Tooltip title="Status" placement="right-start">
+                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
+                        </Tooltip>
                     </ListItem>
                 </List>
             </Toolbar>
