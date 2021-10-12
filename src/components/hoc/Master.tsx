@@ -17,7 +17,7 @@ const Master = () => {
                 </Hidden>
 
                 <Link to={"/"}>
-                    <img alt="Logo" width="48" height="53" src={LogoIcon} />
+                    <img alt="Logo"  height="40" src={LogoIcon} />
                 </Link>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
                     <Link to="/">Inbox</Link>
