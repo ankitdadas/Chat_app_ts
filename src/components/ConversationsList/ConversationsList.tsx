@@ -1,7 +1,7 @@
 import "./ConversationsList.scss";
 import React, { useContext, useState, useEffect } from "react";
 import {
-    WhatsApp, SmsOutlined, BorderColor, FilterListOutlined, Block
+    WhatsApp, SmsOutlined, FilterListOutlined, Block
 } from '@mui/icons-material';
 import {
     Box, Grid, Button, Typography, IconButton, List,
@@ -59,7 +59,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
         if (contact.firstName !== "" && contact.lastName !== "") {
             return `${contact.firstName} ${contact.lastName}`;
         } else {
-            return contact.mobile.number;
+            return contact.mobile.mnumber;
         }
     };
     return (

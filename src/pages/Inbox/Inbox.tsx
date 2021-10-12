@@ -1,22 +1,19 @@
-import React, { useState, useEffect, FunctionComponent } from "react";
-import { Box, Drawer, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Drawer } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
 import ConversationData from "../../components/ConversationsList/Conversion.json";
-import UserData from '../../components/ConversationsList/Conversion.json';
 import Contacts from './../../components/Contacts/Contacts';
 
 import InboxContext, { InboxInterface } from './../../contexts/inbox/inbox.context';
- 
+const drawerWidth = 335;
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
     const [open, setOpen] = React.useState(true);
     const [conversationList, setConversationList] = useState(sampleAppContext || []);
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
 
-
-    const drawerWidth = 335;
     const updateBlockStatus: any = () => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
         conversationList[tempConversionIndex].block = true;
@@ -34,6 +31,12 @@ const Inbox = (props: any) => {
         if (tempConversionList.length > 0)
             setSelectedUser(conversationList[selectedIndx])
     }
+    const updateExpanded: any = (indx:any, contactIndx:any, expanded:boolean) => {
+        const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
+        conversationList[tempConversionIndex].contacts[contactIndx].contact.thirdPartyDetails[indx].expanded = expanded;
+        setConversationList([...conversationList]);
+       
+    }
     return (
         <InboxContext.Provider value={conversationList}>
             <React.Fragment>
@@ -42,7 +45,9 @@ const Inbox = (props: any) => {
                     style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
                     <Conversation setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
-                    <Chat updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} archiveChat={archiveChat} />
+                    <Chat open={open} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
+                        setOpen(false)
+                    } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
                 </Box>
 
                 {
@@ -63,7 +68,7 @@ const Inbox = (props: any) => {
                             variant="persistent"
                             anchor="right"
                         >
-                            <Contacts />  
+                            <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
                         </Drawer>
                     )
                 }

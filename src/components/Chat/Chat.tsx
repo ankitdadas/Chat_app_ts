@@ -1,15 +1,15 @@
 import "./Chat.scss";
-import React, { useState } from "react";
+import React from "react";
 import {
-    Box, AppBar, Toolbar, Typography, IconButton, List,
+    Box, AppBar, Toolbar, IconButton, List,
     ListItemAvatar, Divider, TextareaAutosize, Avatar, ListItemText, Tooltip, Hidden
 } from "@mui/material";
 import {
-    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined,
+    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined, ContactsOutlined
 } from '@mui/icons-material';
 import ChatButtonsHolder from "./ChatButtonsHolder";
 import ChatButtons from "./ChatButtons";
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+
 
 
 const Chat = (props: any) => {
@@ -28,30 +28,32 @@ const Chat = (props: any) => {
             <AppBar color="default" elevation={0} position="absolute">
                 <Toolbar
                     style={{
-                        
+
                         display: "flex",
                         justifyContent: "space-between",
                     }}
                 >
                     <Box>
-                        <Hidden smUp={true} > <IconButton ><ContactsOutlinedIcon /></IconButton></Hidden>
+                        <Hidden smUp={true} > <IconButton ><ContactsOutlined /></IconButton></Hidden>
                     </Box>
-                    <Box  style={{
+                    <Box style={{
                         textAlign: "right",
                         display: "flex",
                         justifyContent: "flex-end",
-                    }}>
-                        <IconButton >
-                            <Check onClick={archiveChat} />
-                        </IconButton>
-
+                    }}> <Tooltip title="Archive Chat" placement="bottom">
+                            <IconButton >
+                                <Check onClick={archiveChat} />
+                            </IconButton>
+                        </Tooltip>
                         {
                             selectedUser.block === false &&
-                            <IconButton>
-                                <Block onClick={() => {
-                                    updateBlockStatus()
-                                }} />
-                            </IconButton>
+                            <Tooltip title="Block Chat" placement="bottom">
+                                <IconButton>
+                                    <Block onClick={() => {
+                                        updateBlockStatus()
+                                    }} />
+                                </IconButton>
+                            </Tooltip>
                         }
                         <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
                             <IconButton>

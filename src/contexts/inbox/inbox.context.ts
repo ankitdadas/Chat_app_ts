@@ -1,5 +1,12 @@
-import React, { createContext } from "react";
-
+import React from "react";
+export interface ThirdPartyInterface {
+  logo?: string;
+  Integration?: string;
+  gender?: string;
+  age?: any;
+  country?:string;
+  expanded?: boolean;
+}
 export interface InboxInterface {
   contact: {
     firstName: string;
@@ -18,6 +25,7 @@ export interface InboxInterface {
   type: string;
   userId: number;
   block: boolean;
+  contacts:any
 }
 
 const InboxContext = React.createContext<InboxInterface[] | []>([]);
