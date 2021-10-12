@@ -81,7 +81,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
                     component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 1 }}
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', }}
                 >
-                    <Searchbox setUsers={setUsers}></Searchbox>
+                    <Searchbox  setUsers={setUsers}></Searchbox>
                     <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
                         <FilterListOutlined />
                     </IconButton>
@@ -112,8 +112,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
                                 <ListItemAvatar>
                                     <ListItemIcon>
                                         <Badge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                                            badgeContent={getStatusIcon(c.type)}
-                                        >
+                                            badgeContent={getStatusIcon(c.type)}                                        >
                                             <Avatar style={{ width: "40px" }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
                                         </Badge>
                                     </ListItemIcon>
@@ -123,10 +122,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
                                         <Grid item xs={12}>
                                             <Box style={{ display: "flex", justifyContent: "flex-end" }}>
                                                 {c.unread && c.unread.length > 0 && (<span className="dot"></span>)}
+                                                {c.block && (<Block style={{fontSize:"13px"}} />)}
                                             </Box>
-                                            <Box style={{ display: "flex", justifyContent: "flex-end" }}>
-                                                {c.block && (<Block />)}
-                                            </Box>
+                                            
                                             <Box style={{ display: "flex", justifyContent: "space-between" }}>
                                                 <div style={{ fontSize: 14, fontWeight: 400 }}> {getNameOrMobileNumber(c)}</div>
                                                 <div>

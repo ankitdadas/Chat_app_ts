@@ -1,3 +1,9 @@
+@import "./components/Common/Scss/variable.scss";
+
+
+
+
+
 .header-message {
   text-align: left;
   margin: 10px;
@@ -22,22 +28,9 @@ border-radius: 0px;
   }
 }
 
-.app-container {
- // padding: 5px;
-  // .MuiGrid-item {
-  //   margin: 10px;
-  // }
-}
+ 
 
-.logoicon {
-
- // height: 53px;
-// width: 48px;
-// left: 20px;
-// top: 18px;
-//border-radius: 0px;
-
-}
+ 
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -88,15 +81,23 @@ border-radius: 0px;
 
 .mainChatSection{
   margin-top: 65px;
+  height: calc(100vh - 70px);
 }
 
 
 .ChatMainPageHolder{
   display: flex;
-  margin-left: 71px;
-  width: calc(100% - 430px);
+  margin-left: 70px;  
   justify-content: flex-start;
   align-items: flex-start;
+
+  @media #{$smallscreens} {
+    margin-left: 0px;
+    width: 100% !important;
+}
+
+
+ 
  
 }
 
@@ -143,4 +144,12 @@ padding-right: 5px !important;
     max-width: 350px;
     padding: 70px 10px 0px;
   }
+}
+
+.searchBox{
+  margin-left: 5px;
+  background: #f8f8f8;
+ .MuiOutlinedInput-notchedOutline{
+   border-color: #fff;
+ }
 }

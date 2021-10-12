@@ -19,7 +19,7 @@
   }
 
   .message-block {
-    border-radius: 10px;
+    border-radius: 5px;
     padding:10px 16px !important;
     margin-bottom: 20px !important;
     display: flex;
@@ -38,6 +38,8 @@
     }
 
     .message-block.active{
+      box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+      background: #fff;
       &:before{
         background-color: #0078CE;
       }
