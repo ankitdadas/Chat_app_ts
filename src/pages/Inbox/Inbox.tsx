@@ -1,13 +1,37 @@
 import React, { useState } from "react";
-import { Box, Drawer } from "@mui/material";
+import {  Drawer } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
 import ConversationData from "../../components/ConversationsList/Conversion.json";
 import Contacts from './../../components/Contacts/Contacts';
-
+import MuiBox, { BoxProps as MuiAppBarProps } from '@mui/material/Box';
 import InboxContext, { InboxInterface } from './../../contexts/inbox/inbox.context';
+import { styled } from '@mui/material/styles';
 const drawerWidth = 335;
+
+interface AppBarProps extends MuiAppBarProps {
+    open?: boolean;
+}
+
+const AppBox = styled(MuiBox, {
+    shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+    transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginRight: drawerWidth,
+    }),
+}));
+
+
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
     const [open, setOpen] = React.useState(true);
@@ -31,24 +55,24 @@ const Inbox = (props: any) => {
         if (tempConversionList.length > 0)
             setSelectedUser(conversationList[selectedIndx])
     }
-    const updateExpanded: any = (indx:any, contactIndx:any, expanded:boolean) => {
+    const updateExpanded: any = (indx: any, contactIndx: any, expanded: boolean) => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
         conversationList[tempConversionIndex].contacts[contactIndx].contact.thirdPartyDetails[indx].expanded = expanded;
         setConversationList([...conversationList]);
-       
+
     }
     return (
         <InboxContext.Provider value={conversationList}>
             <React.Fragment>
-                <Box
+                <AppBox open ={open}
                     className="ChatMainPageHolder"
-                    style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
+                    //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
                     <Conversation setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
                     <Chat open={open} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
                         setOpen(false)
                     } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
-                </Box>
+                </AppBox>
 
                 {
                     open && (
