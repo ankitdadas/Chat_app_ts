@@ -5,9 +5,11 @@ import {
     InboxOutlined, PodcastsOutlined, GroupOutlined, TextSnippetOutlined,
     TimelineOutlined, ConstructionOutlined, SentimentSatisfiedAltOutlined
 } from '@mui/icons-material';
+import { useLocation } from 'react-router-dom';
 
-const drawerWidth = 40;
 function NavigationBar() {
+    // extract pathname from location
+    const { pathname } = useLocation();
     return (
         <Drawer
             variant="permanent"
@@ -27,12 +29,12 @@ function NavigationBar() {
             >
                 <List className="sideNavigation">
                     <ListItem>
-                        <NavLink to={"/inbox"} exact activeClassName="selected">
+                        <NavLink to={"/inbox"} exact isActive={() => ['/', '/inbox'].includes(pathname)} activeClassName="selected">
                             <InboxOutlined />
                         </NavLink>
                     </ListItem>
                     <ListItem>
-                        <NavLink to={"/Campaigns"} exact activeClassName="selected">
+                        <NavLink to={"/campaigns"} exact activeClassName="selected">
                             <PodcastsOutlined />
                         </NavLink>
                     </ListItem>

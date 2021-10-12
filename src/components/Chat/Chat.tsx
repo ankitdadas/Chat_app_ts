@@ -1,7 +1,7 @@
 import "./Chat.scss";
-import React, { useState } from "react";
+import React from "react";
 import {
-    Box, AppBar, Toolbar, Typography, IconButton, List,
+    Box, AppBar, Toolbar, IconButton, List,
     ListItemAvatar, Divider, TextareaAutosize, Avatar, ListItemText, Tooltip, Hidden
 } from "@mui/material";
 import {
