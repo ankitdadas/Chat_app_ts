@@ -2,12 +2,15 @@ import "./Chat.scss";
 import React, { useState } from "react";
 import {
     Box, AppBar, Toolbar, Typography, IconButton, List,
-    ListItemAvatar, Divider, TextareaAutosize, Avatar, ListItemText, Tooltip
+    ListItemAvatar, Divider, TextareaAutosize, Avatar, ListItemText, Tooltip, Hidden
 } from "@mui/material";
 import {
-    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined, InsertLinkSharp,
-    AttachFileSharp, TextSnippet, VpnKey
+    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined,
 } from '@mui/icons-material';
+import ChatButtonsHolder from "./ChatButtonsHolder";
+import ChatButtons from "./ChatButtons";
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+
 
 const Chat = (props: any) => {
     const {
@@ -25,29 +28,38 @@ const Chat = (props: any) => {
             <AppBar color="default" elevation={0} position="absolute">
                 <Toolbar
                     style={{
+                        
+                        display: "flex",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <Box>
+                        <Hidden smUp={true} > <IconButton ><ContactsOutlinedIcon /></IconButton></Hidden>
+                    </Box>
+                    <Box  style={{
                         textAlign: "right",
                         display: "flex",
                         justifyContent: "flex-end",
-                    }}
-                >
-
-                    <IconButton >
-                        <Check onClick={archiveChat} />
-                    </IconButton>
-
-                    {
-                        selectedUser.block === false &&
-                        <IconButton>
-                            <Block onClick={() => {
-                                updateBlockStatus()
-                            }} />
+                    }}>
+                        <IconButton >
+                            <Check onClick={archiveChat} />
                         </IconButton>
-                    }
-                    <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
-                        <IconButton>
-                            {open === true ? <ArrowBackIos onClick={handleDrawerClose} /> : <ArrowForwardIos onClick={handleDrawerOpen} />}
-                        </IconButton>
-                    </Tooltip>
+
+                        {
+                            selectedUser.block === false &&
+                            <IconButton>
+                                <Block onClick={() => {
+                                    updateBlockStatus()
+                                }} />
+                            </IconButton>
+                        }
+                        <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
+                            <IconButton>
+                                {open === true ? <ArrowBackIos onClick={handleDrawerClose} /> : <ArrowForwardIos onClick={handleDrawerOpen} />}
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+
 
                 </Toolbar>
             </AppBar>
@@ -102,7 +114,7 @@ const Chat = (props: any) => {
                                 display: "flex",
                                 justifyContent: "space-around",
                                 alignItems: "flex-end",
-                                padding: "10px 10px 0px",
+                                padding: "10px 0px 0px",
                             }}
                         >
                             <Box
@@ -112,59 +124,43 @@ const Chat = (props: any) => {
                                     alignItems: "flex-start",
                                 }}
                             >
-                                <IconButton>
-                                    <VpnKey />
-                                </IconButton>
-                                <IconButton>
-                                    <Tooltip placement="top" title="Links">
-                                        <InsertLinkSharp />
-                                    </Tooltip>
-                                </IconButton>
-                                <IconButton>
-                                    <Tooltip placement="top" title="Attachments">
-                                        <AttachFileSharp />
-                                    </Tooltip>
-                                </IconButton>
-                                <IconButton>
-                                    <TextSnippet />
-                                </IconButton>
+
+                                <Hidden smUp={true}> <ChatButtonsHolder /></Hidden>
+
+                                <Hidden smDown={true}> <ChatButtons /></Hidden>
+
                             </Box>
                             <Box
                                 style={{
                                     display: "flex",
                                     flexDirection: "column",
-                                    marginRight: 10,
+                                    marginRight: 5,
                                     position: "relative",
                                 }}
                                 sx={{ flexGrow: 1 }}
                             >
                                 <TextareaAutosize
-                                    aria-label="minimum height"
-                                    minRows={2}
+                                    aria-label="Type a message..."
+                                    className="textChatSection"
+                                    minRows={1}
                                     maxRows={3}
-                                    placeholder="Minimum 3 rows"
-                                    style={{
-                                        width: "100%",
-                                        border: 0,
-                                        background: "#f1f1f1",
-                                        padding: "8px 15px 15px ",
-                                        maxWidth: "95%",
-                                    }}
+                                    placeholder="Type a message..."
+
                                 />
-                                <Typography className="helper-text">
+                                <span className="HelperTextChat">
                                     3 segments (23 characters remaining)
-                                </Typography>
+                                </span>
                             </Box>
                             <Box
                                 style={{
                                     display: "flex",
-                                    justifyContent: "flex-end",
-                                    alignItems: "flex-start",
+                                    justifyContent: "flex-center",
+                                    alignItems: "flex-center",
                                 }}
                             >
                                 <IconButton>
                                     <Tooltip placement="top" title="Send">
-                                        <SendOutlined></SendOutlined>
+                                        <SendOutlined style={{ color: "#000" }} />
                                     </Tooltip>
                                 </IconButton>
                             </Box>

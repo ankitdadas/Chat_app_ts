@@ -8,7 +8,7 @@ import UserData from '../../components/ConversationsList/Conversion.json';
 import Contacts from './../../components/Contacts/Contacts';
 
 import InboxContext, { InboxInterface } from './../../contexts/inbox/inbox.context';
-
+ 
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
     const [open, setOpen] = React.useState(true);
@@ -16,7 +16,7 @@ const Inbox = (props: any) => {
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
 
 
-    const drawerWidth = 340;
+    const drawerWidth = 335;
     const updateBlockStatus: any = () => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
         conversationList[tempConversionIndex].block = true;
@@ -39,7 +39,7 @@ const Inbox = (props: any) => {
             <React.Fragment>
                 <Box
                     className="ChatMainPageHolder"
-                    style={{ width: `calc(100% - ${drawerWidth}px - 60px)` }}
+                    style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
                     <Conversation setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
                     <Chat updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} archiveChat={archiveChat} />
@@ -61,9 +61,7 @@ const Inbox = (props: any) => {
                             variant="persistent"
                             anchor="right"
                         >
-
-                            <span> Hello Brother</span>
-                            {/* <Contacts finalUserDataa={finalUserDataa} />  */}
+                            <Contacts />  
                         </Drawer>
                     )
                 }

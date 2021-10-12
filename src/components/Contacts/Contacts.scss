@@ -5,14 +5,15 @@
 
 }
 
-.rightSidebarHolder{
+.rightSidebarHolder {
   margin-top: 70px;
-  
+
   background-color: #000;
+
   .user-block {
-      height: 100%;
-      width: 100%; 
-      border-radius: 0px;    
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
   }
 }
 
@@ -24,27 +25,28 @@
 
 .address-text {
   height: 21px;
-width: 54px;
-left: 1312px;
-top: 368px;
-border-radius: nullpx;
+  width: 54px;
+  left: 1312px;
+  top: 368px;
+  border-radius: nullpx;
 
 }
 
 .message-spacing {
-   font-size: 16px;
+  font-size: 16px;
 }
 
 .gearIcon {
   margin-right: 16px;
+
   svg {
-  color: #AAB2B8;
-  height: 22px;
-width: 22px;
-left: 1px;
-top: 1px;
-border-radius: 0px;
-margin-right: 16px;
+    color: #AAB2B8;
+    height: 22px;
+    width: 22px;
+    left: 1px;
+    top: 1px;
+    border-radius: 0px;
+    margin-right: 16px;
   }
 }
 
@@ -58,37 +60,40 @@ margin-right: 16px;
   font-style: italic;
 }
 
-.userIcon{
+.userIcon {
   display: flex;
   justify-content: center;
   align-items: center;
 
   .MuiAvatar-root {
-      display: flex;
-  position: absolute;
-  align-items: center;
-  height: 96px;
-  width: 96px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    height: 96px;
+    width: 96px;
   }
 }
 
-.profileCard{
+.profileCard {
   position: relative;
   font-size: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 
-.userAvtarHolder{
-display: flex;
-justify-content: center;
-align-items: center;
-position: relative;
-margin-top: -62px;
-.profileCardImage{
-  width: 80px;
-  height: 80px;
-  margin: 0px 20px;
-}
+  .userAvtarHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: -62px;
 
-  .arrowIcon{
+    .profileCardImage {
+      width: 80px;
+      height: 80px;
+      margin: 0px 20px;
+    }
+
+    .arrowIcon {
       background-color: transparent;
       border-width: 0px;
       position: relative;
@@ -97,35 +102,44 @@ margin-top: -62px;
       text-align: center;
       align-items: center;
       justify-content: center;
-      svg{
-          color: #AAB2B8;
-      }
-      div{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
-  }
-  .arrowIcon.left{
-      
-  }
-  .arrowIcon.right{
-       
-  }
-}
 
-.profileCardInner{
-  padding: 15px;
-  max-width: 87%;
-  margin:auto;
-  .profileCardText{
+      svg {
+        color: #AAB2B8;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+     
+  }
+
+  .profileCardInner {
+    padding: 15px;
+    max-width: 87%;
+    margin: auto;
+
+    .profileCardText {
       margin-top: 10px;
-      font-size:15px;
-      svg{
-          margin-right: 15px;
+      font-size: 15px;
+      display: block;
+
+      svg {
+        margin-right: 15px;
       }
+    }
   }
 }
 
- 
+.contactCrollPanel {
+  padding: 5px;
+  text-align: center;
+  color: #000;
+  height: calc(100vh - 340px);
+  overflow: auto;
+  border-radius: 10px;
+  background: #EAF0FF;
 }

@@ -1,8 +1,8 @@
  
 .chat-grid {
     position: relative;
-  flex-grow: 1;
-  background: #fff;
+    flex-grow: 1;
+    background: #fff;
 }
 
  
@@ -88,20 +88,7 @@ text-align: center;
     }
 
 }
-
-.scroll-flow {
-    overflow-y: scroll;
-    @media screen and (min-width: 1024px) and  (max-width: 1300px) {
-     //   height: 400px;
-    }
-    @media screen and (min-width: 1300px) and (max-width: 1440px) {
-    //    height: 500px;
-    }
-    @media screen and (min-width: 1440px) {
-    //    height: 465px;
-    }
-    
-}
+ 
 
 
 .bottomChatSectionHolder{
@@ -114,15 +101,27 @@ text-align: center;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        width: 100%;
+        max-width: 98%;
 
-        .HelperTextChat{
+        
+        .textChatSection{
+            width: 100%;
+            border: 0px;
+            background: #fff;
+            padding: 8px 15px 20px;
+            max-width: 95%;
+            font-size: 1rem;
+         }
+
+         .HelperTextChat {
             position: absolute;
-            right: 10px;
-            bottom: 2px;
-            padding: 5px 5px;
+            right: 19px;
+            bottom: 1px;
+            padding: 1px 5px;
             background: #fff;
             font-size: 14px;
-            }
+          }
     }
 
     .MuiButtonBase-root{

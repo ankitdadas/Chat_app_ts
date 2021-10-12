@@ -1,8 +1,9 @@
 import * as React from "react";
-import { TextField, Autocomplete } from "@mui/material";
+import { TextField, Autocomplete, makeStyles } from "@mui/material";
 import ConversationData from './../ConversationsList/Conversion.json';
+import { ClassNames } from "@emotion/react";
 
-
+ 
 
 
 export default function Searchbox({ setUsers }: { setUsers: any }) {
@@ -10,6 +11,8 @@ export default function Searchbox({ setUsers }: { setUsers: any }) {
     return (
         <Autocomplete
             id="free-solo-demo"
+            size="small"
+            className="searchBox"
             freeSolo
             filterOptions={(x) => x}
             sx={{ flex: 1 }}
@@ -37,7 +40,7 @@ export default function Searchbox({ setUsers }: { setUsers: any }) {
                     setSearchBoxArr([]);
                 }
             }}
-            renderInput={(params) => <TextField {...params} variant="outlined" style={{ minWidth: "265px", borderColor: "#fff", outline: "none", marginLeft: "5px", marginRight: "5px" }} label="Search" />}
+            renderInput={(params) => <TextField  {...params} variant="outlined"   style={{ minWidth: "265px", borderColor: "#fff", outline: "none", marginLeft: "5px", marginRight: "5px" }}  placeholder="Search"  />}
         />
     );
 }

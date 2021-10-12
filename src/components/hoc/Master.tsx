@@ -1,14 +1,21 @@
 import React from "react";
-import { AppBar, IconButton, Toolbar, Box, Typography,Grid } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Box, Typography,Grid, Hidden } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Notifications, HelpOutline, SettingsOutlined } from '@mui/icons-material';
 import LogoIcon from './../../assets/sakari-logo.png';
 import Routing from './../../Routing';
+import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
 const Master = () => {
     return (
         <>
         <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
             <Toolbar>
+                <Hidden smUp={true}>
+                <IconButton size="large" >
+                    <ReorderOutlinedIcon /> 
+                </IconButton>
+                </Hidden>
+
                 <Link to={"/"}>
                     <img alt="Logo" width="48" height="53" src={LogoIcon} />
                 </Link>
