@@ -25,7 +25,7 @@ const Chat = (props: any) => {
     return (
 
         <Box className="chat-grid">
-            <AppBar color="default" elevation={0} position="absolute">
+            <AppBar color="default" elevation={0} position="absolute" style={{background:"#fff"}}>
                 <Toolbar
                     style={{
 
