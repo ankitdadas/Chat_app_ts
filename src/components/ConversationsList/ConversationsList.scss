@@ -224,9 +224,9 @@ border-radius: 0px;
 .conversationBox{
   background: #F8FAFB;
   height: auto;
-  padding: 10px 0px 0px 11px;
+  padding: 0px 0px 0px 1px;
   position: relative;
-  
+  flex-grow: auto;
   width: 100%;
   max-width: 320px;
 }
