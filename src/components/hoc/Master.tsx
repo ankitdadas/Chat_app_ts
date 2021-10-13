@@ -43,7 +43,7 @@ const Master = () => {
                 </Toolbar>
             </AppBar>
             <Grid container className="mainChatSection">
-                <Routing></Routing>
+                <Routing /> 
             </Grid>
         </>
 
