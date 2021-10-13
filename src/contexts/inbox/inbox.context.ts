@@ -25,6 +25,8 @@ export interface InboxInterface {
   type: string;
   userId: number;
   block: boolean;
+  archive:boolean;
+  showArchive:boolean;
   contacts:any
 }
 

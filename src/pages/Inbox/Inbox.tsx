@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
@@ -35,7 +35,7 @@ const AppBox = styled(MuiBox, {
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
     const [open, setOpen] = React.useState(true);
-    const [conversationList, setConversationList] = useState(sampleAppContext || []);
+    const [conversationList, setConversationList] = useState(sampleAppContext.filter(p => p.showArchive === true) || []);
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
 
     const updateBlockStatus: any = () => {
@@ -48,12 +48,25 @@ const Inbox = (props: any) => {
         setSelectedUser(tempConversion)
     }
     const archiveChat: any = () => {
-        const selectedIndx = conversationList.findIndex(c => c.userId !== selectedUser.userId)!;
-        const tempConversionList = conversationList.filter(c => c.userId !== selectedUser.userId)!;
+        const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
+        conversationList[tempConversionIndex].archive = true;
+        conversationList[tempConversionIndex].showArchive = false;
+        if (tempConversionIndex < conversationList.length - 1)
+            setSelectedUser(conversationList[tempConversionIndex + 1]);
+        else if (tempConversionIndex < conversationList.length && conversationList.length > 1) {
+            setSelectedUser(conversationList[tempConversionIndex - 1]);
+        }
 
-        setConversationList([...tempConversionList]);
-        if (tempConversionList.length > 0)
-            setSelectedUser(conversationList[selectedIndx])
+        setConversationList([...conversationList].filter(p => p.showArchive === true));
+    }
+    const showarchiveChat: any = () => {
+
+
+        setConversationList([...sampleAppContext].map((q: any) => {
+
+            return { ...q, showArchive: true }
+        })
+        );
     }
     const updateExpanded: any = (indx: any, contactIndx: any, expanded: boolean) => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
@@ -64,12 +77,12 @@ const Inbox = (props: any) => {
     return (
         <InboxContext.Provider value={conversationList}>
             <React.Fragment>
-                <AppBox open ={open}
+                <AppBox open={open}
                     className="ChatMainPageHolder"
-                    //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
+                //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
-                    <Conversation setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
-                    <Chat open={open} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
+                    <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
+                    <Chat open={open} conversationList={conversationList} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
                         setOpen(false)
                     } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
                 </AppBox>

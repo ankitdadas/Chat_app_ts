@@ -1,21 +1,29 @@
 import "./ConversationsList.scss";
 import React, { useContext, useState, useEffect } from "react";
 import {
-    WhatsApp, SmsOutlined, FilterListOutlined, Block
+    WhatsApp, SmsOutlined, FilterListOutlined, Block,
+    LockOutlined
 } from '@mui/icons-material';
 import {
     Box, Grid, Button, Typography, IconButton, List,
-    ListItemAvatar, ListItemIcon, Badge, Avatar, ListItemText, Paper
+    ListItemAvatar, ListItemIcon, Badge, Avatar, ListItemText, Paper, Dialog,
+    Select, OutlinedInput, MenuItem, Checkbox, DialogTitle, DialogContent,
+    DialogActions, InputLabel, Divider
 } from "@mui/material";
 import Searchbox from './../SearchBox/SearchBox';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Moment from "react-moment";
 import InboxContext from "../../contexts/inbox/inbox.context";
+import Switch from '@mui/material/Switch';
 
-const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUserId: any, selectedUserId: any }) => {
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }:
+    { setSelectedUserId: any, selectedUserId: any, showarchiveChat: any }) => {
     const ConversationData = useContext(InboxContext);
     const [conversationData, setConversationData] = useState(ConversationData);
+    const [openArchived, setOpenArchived] = useState(false);
+    const [selectedArchivedUser, setSelectedArchivedUser] = useState('0');
     useEffect(() => {
 
         setConversationData(ConversationData)
@@ -81,9 +89,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
                     component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 1 }}
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', }}
                 >
-                    <Searchbox  setUsers={setUsers}></Searchbox>
+                    <Searchbox setUsers={setUsers}></Searchbox>
                     <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                        <FilterListOutlined />
+                        <FilterListOutlined onClick={() => setOpenArchived(true)} />
                     </IconButton>
                 </Paper>
             </Grid>
@@ -122,9 +130,10 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
                                         <Grid item xs={12}>
                                             <Box style={{ display: "flex", justifyContent: "flex-end" }}>
                                                 {c.unread && c.unread.length > 0 && (<span className="dot"></span>)}
-                                                {c.block && (<Block style={{fontSize:"13px"}} />)}
+                                                {c.block && (<Block style={{ fontSize: "13px" }} />)}
+                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px" }} />)}
                                             </Box>
-                                            
+
                                             <Box style={{ display: "flex", justifyContent: "space-between" }}>
                                                 <div style={{ fontSize: 14, fontWeight: 400 }}> {getNameOrMobileNumber(c)}</div>
                                                 <div>
@@ -149,7 +158,39 @@ const ConversationList = ({ setSelectedUserId, selectedUserId }: { setSelectedUs
 
                 </InfiniteScroll>
             </Grid>
+            <Dialog open={openArchived} onClose={() => setOpenArchived(false)}>
+                <DialogTitle>Archive  <Switch {...label} /></DialogTitle>
+                <Divider />
+                <DialogContent>
+                    <InputLabel id="demo-simple-select-error-label">Age</InputLabel>
+                    <Select sx={{ m: 1, minWidth: 120 }}
+                        labelId="demo-multiple-checkbox-label"
+                        id="demo-multiple-checkbox"
+                        label="Testing"
+                       //input={<OutlinedInput label="Testing" />}
 
+                    >
+
+                        <MenuItem key={'Test'} value={'Test'}>
+                            <Checkbox checked={false} />
+                            <ListItemText primary={'Test'} />
+                        </MenuItem>
+                        <MenuItem key={'Test 1'} value={'Test 1'}>
+                            <Checkbox checked={false} />
+                            <ListItemText primary={'Test 1'} />
+                        </MenuItem>
+                    </Select>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => {
+                        showarchiveChat();
+                        setOpenArchived(false);
+                    }
+                    }>Apply</Button>
+                    <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
+
+                </DialogActions>
+            </Dialog>
         </Grid>
     );
 };

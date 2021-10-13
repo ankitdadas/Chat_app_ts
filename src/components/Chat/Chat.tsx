@@ -1,11 +1,11 @@
 import "./Chat.scss";
-import React from "react";
+import React, { useState } from "react";
 import {
     Box, AppBar, Toolbar, IconButton, List,
     ListItemAvatar, Divider, TextareaAutosize, Avatar, ListItemText, Tooltip, Hidden
 } from "@mui/material";
 import {
-    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined, ContactsOutlined
+    Check, Block, ArrowBackIos, ArrowForwardIos, SendOutlined, ContactsOutlined, Archive
 } from '@mui/icons-material';
 import ChatButtonsHolder from "./ChatButtonsHolder";
 import ChatButtons from "./ChatButtons";
@@ -19,9 +19,20 @@ const Chat = (props: any) => {
         handleDrawerClose,
         archiveChat,
         updateBlockStatus,
-        selectedUser
+        selectedUser,
+        conversationList
     } = props || {}
-    console.log(selectedUser);
+    const [txtMessage, setTxtMessage] = useState('');
+   /*  const getNameOrMobileNumber = (userid: any) => {
+        alert(userid);
+        let { contact }: { contact: any } = conversationList.find((c: any) => c.userId === userid);
+
+        if (contact.firstName !== "" && contact.lastName !== "") {
+            return `${contact.firstName} ${contact.lastName}`;
+        } else {
+            return contact.mobile.mnumber;
+        }
+    }; */
     return (
 
         <Box className="chat-grid">
@@ -42,7 +53,7 @@ const Chat = (props: any) => {
                         justifyContent: "flex-end",
                     }}> <Tooltip title="Archive Chat" placement="bottom">
                             <IconButton >
-                                <Check onClick={archiveChat} />
+                                <Archive onClick={archiveChat} />
                             </IconButton>
                         </Tooltip>
                         {
@@ -147,10 +158,11 @@ const Chat = (props: any) => {
                                     minRows={1}
                                     maxRows={3}
                                     placeholder="Type a message..."
-
-                                />
+                                    maxLength={200}
+                                    value={txtMessage}
+                                    onChange={(e) => setTxtMessage(e.target.value)} />
                                 <span className="HelperTextChat">
-                                    3 segments (23 characters remaining)
+                                    3 segments ({`${200 - txtMessage.length} characters remaining`})
                                 </span>
                             </Box>
                             <Box

@@ -27,6 +27,14 @@ const Contacts = (props: any) => {
   useEffect(() => {
     setUserDataDetail(selectedUser.contacts[selectedIndx]);
   }, [selectedIndx, selectedUser.contacts])
+  const getNameOrMobileNumber = ({ contact }: { contact: any }) => {
+
+    if (contact.firstName !== "" && contact.lastName !== "") {
+        return `${contact.firstName} ${contact.lastName}`;
+    } else {
+        return contact.mobile.mnumber;
+    }
+};
   return (
     <>
       <Box className="user-block" >
@@ -92,7 +100,7 @@ const Contacts = (props: any) => {
                           marginBottom: 20,
                         }} >
 
-                          {`${userDataDetail.contact.firstName} ${userDataDetail.contact.lastName}`}
+                          {`${getNameOrMobileNumber(userDataDetail)}`}
                         </Typography>
                       </Grid>
                       <Grid xs={12} item >
@@ -118,7 +126,7 @@ const Contacts = (props: any) => {
                         >
                           <LocalPhoneOutlinedIcon />
 
-                          {`${userDataDetail.contact.mobile.number} `}
+                          {`${userDataDetail.contact.mobile.mnumber} `}
                         </Box>
                       </Grid>
                     </Grid>

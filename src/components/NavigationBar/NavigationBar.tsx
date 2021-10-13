@@ -47,7 +47,7 @@ function NavigationBar() {
                     </ListItem>
                     <ListItem>
                         <Tooltip title="Contacts" placement="right-start">
-                            <NavLink to={"/Contacts"} exact activeClassName="selected">
+                            <NavLink to={"/contacts"} exact activeClassName="selected">
                                 <GroupOutlined />
                             </NavLink>
                         </Tooltip>
@@ -55,21 +55,21 @@ function NavigationBar() {
 
                     <ListItem>
                         <Tooltip title="Templates" placement="right-start">
-                            <NavLink to={"/Templates"} exact activeClassName="selected">
+                            <NavLink to={"/templates"} exact activeClassName="selected">
                                 <TextSnippetOutlined />
                             </NavLink>
                         </Tooltip>
                     </ListItem>
                     <ListItem>
                         <Tooltip title="Tools" placement="right-start">
-                            <NavLink to={"/Tools"} exact activeClassName="selected">
+                            <NavLink to={"/tools"} exact activeClassName="selected">
                                 <TimelineOutlined />
                             </NavLink>
                         </Tooltip>
                     </ListItem>
                     <ListItem>
                         <Tooltip title="Feature Requests" placement="right-start">
-                            <NavLink to={"/Featurerequests"} exact activeClassName="selected">
+                            <NavLink to={"/featurerequests"} exact activeClassName="selected">
                                 <ConstructionOutlined />
                             </NavLink>
                         </Tooltip>
