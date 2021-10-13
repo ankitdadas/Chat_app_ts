@@ -36,7 +36,7 @@ const Chat = (props: any) => {
     return (
 
         <Box className="chat-grid">
-            <AppBar color="default" elevation={0} position="absolute">
+            <AppBar color="default" elevation={0} position="absolute" style={{background:"#fff"}}>
                 <Toolbar
                     style={{
 
@@ -68,7 +68,7 @@ const Chat = (props: any) => {
                         }
                         <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
                             <IconButton>
-                                {open === true ? <ArrowBackIos onClick={handleDrawerClose} /> : <ArrowForwardIos onClick={handleDrawerOpen} />}
+                                {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
                             </IconButton>
                         </Tooltip>
                     </Box>
@@ -79,14 +79,13 @@ const Chat = (props: any) => {
 
             <Box className="chatBoxHolder" style={{ height: "calc(100vh - 160px)" }}>
 
-
-
+            
                 {
                     selectedUser.messages && selectedUser.messages.map((cht: any) => {
                         console.log(selectedUser.userId === cht.userId)
                         return (
                             <Box className={`chatSection ${selectedUser.userId === cht.userId && 'right'} `}>
-                                <List className={`chatBox  `}>
+                                <List className="chatBox">
                                     <Box className="messageInfoBox">
                                         <ListItemAvatar>
                                             {" "}

@@ -50,7 +50,7 @@ const Contacts = (props: any) => {
           <Box className="profileCard" style={{ position: "relative" }}>
 
             <Grid item xs={12}>
-              <Paper className="profileCardInner" style={{ background: "#fff" }}>
+              <Paper className="profileCardInner"  style={{ background: "#fff" }}>
                 <Box className="userAvtarHolder">
                   {selectedUser.contacts.length > 1 &&
                     <Tooltip title="prev" placement="left">
@@ -143,7 +143,7 @@ const Contacts = (props: any) => {
               userDataDetail.contact.thirdPartyDetails.map((t: any, indx: number) => {
 
                 return (
-                  <Accordion expanded={t.expanded}>
+                  <Accordion expanded={t.expanded} style={{borderRadius:"6px", marginBottom:"10px"}} elevation={0}>
                     <AccordionSummary
 
                       aria-controls="panel1a-content"

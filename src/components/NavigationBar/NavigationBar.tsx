@@ -84,15 +84,19 @@ function NavigationBar() {
                 style={{ flexDirection: "column", padding: "0 5px 0px" }}
             >
 
-                <List>
+                <List className="sideNavigation">
                     <ListItem>
                         <Tooltip title="Status" placement="right-start">
-                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
+                        <NavLink to={"/Featurerequests"} exact activeClassName="selected">
+                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon" /> 
+                            </NavLink>
                         </Tooltip>
                     </ListItem>
                     <ListItem>
                         <Tooltip title="Status" placement="right-start">
-                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon"></SentimentSatisfiedAltOutlined>
+                            <NavLink to={"/Featurerequests"} exact activeClassName="selected">
+                            <SentimentSatisfiedAltOutlined className="panel-icon smile-icon" /> 
+                            </NavLink>
                         </Tooltip>
                     </ListItem>
                 </List>

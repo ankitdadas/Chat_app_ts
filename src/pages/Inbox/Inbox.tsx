@@ -92,10 +92,12 @@ const Inbox = (props: any) => {
                         <Drawer
                             className="rightSidebarHolder"
                             sx={{
-                                width: drawerWidth,
+                                width:"100%",
+                                maxWidth: drawerWidth,
                                 flexShrink: 0,
                                 "& .MuiDrawer-paper": {
-                                    width: drawerWidth,
+                                    width:"100%",
+                                    maxWidth: drawerWidth,
                                     boxSizing: "border-box",
                                 },
                             }}
