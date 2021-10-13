@@ -128,10 +128,11 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                 <ListItemText className="user-name">
                                     <Grid container>
                                         <Grid item xs={12}>
-                                            <Box style={{ display: "flex", justifyContent: "flex-end" }}>
+                                            <Box style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                                                {c.block && (<Block style={{ fontSize: "13px", marginRight: "3px" }} />)}
+                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px",marginRight: "3px" }} />)}
                                                 {c.unread && c.unread.length > 0 && (<span className="dot"></span>)}
-                                                {c.block && (<Block style={{ fontSize: "13px" }} />)}
-                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px" }} />)}
+                                                
                                             </Box>
 
                                             <Box style={{ display: "flex", justifyContent: "space-between" }}>
@@ -167,7 +168,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                         labelId="demo-multiple-checkbox-label"
                         id="demo-multiple-checkbox"
                         label="Testing"
-                       //input={<OutlinedInput label="Testing" />}
+                    //input={<OutlinedInput label="Testing" />}
 
                     >
 
