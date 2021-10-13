@@ -3,7 +3,7 @@ import { Drawer } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
-import ConversationData from "../../components/ConversationsList/Conversion.json";
+import ConversationData from "../../components/ConversationsList/ConversationsList.json";
 import Contacts from './../../components/Contacts/Contacts';
 import MuiBox, { BoxProps as MuiAppBarProps } from '@mui/material/Box';
 import InboxContext, { InboxInterface } from './../../contexts/inbox/inbox.context';
@@ -82,7 +82,7 @@ const Inbox = (props: any) => {
                 //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
                     <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
-                    <Chat open={open} conversationList={conversationList} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
+                    <Chat open={open} conversationList={sampleAppContext} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
                         setOpen(false)
                     } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
                 </AppBox>

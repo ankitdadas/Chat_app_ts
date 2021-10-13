@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TextField, Autocomplete } from "@mui/material";
-import ConversationData from './../ConversationsList/Conversion.json';
+import ConversationData from './../ConversationsList/ConversationsList.json';
 
  
 

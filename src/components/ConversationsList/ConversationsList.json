@@ -242,7 +242,18 @@
           "userId": 3,
           "message": "Hello 3"
         },
-        { "userId": 2, "message": "H ru " }
+        { "userId": 2, "message": "H ru " },
+        {
+          "userId": 3,
+          "message": "Good"
+        },
+        { "userId": 2, "message": "H r u  " },
+        {
+          "userId": 3,
+          "message": "i am also good"
+        },
+        { "userId": 3, "message": "Thanks for asking" },
+        { "userId": 3, "message": "Any plan on weekend" }
       ],
       "contacts": [
         {

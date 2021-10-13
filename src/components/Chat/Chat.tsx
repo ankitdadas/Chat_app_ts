@@ -23,8 +23,8 @@ const Chat = (props: any) => {
         conversationList
     } = props || {}
     const [txtMessage, setTxtMessage] = useState('');
-   /*  const getNameOrMobileNumber = (userid: any) => {
-        alert(userid);
+    const getNameOrMobileNumber = (userid: any) => {
+       
         let { contact }: { contact: any } = conversationList.find((c: any) => c.userId === userid);
 
         if (contact.firstName !== "" && contact.lastName !== "") {
@@ -32,11 +32,11 @@ const Chat = (props: any) => {
         } else {
             return contact.mobile.mnumber;
         }
-    }; */
+    };
     return (
 
         <Box className="chat-grid">
-            <AppBar color="default" elevation={0} position="absolute" style={{background:"#fff"}}>
+            <AppBar color="default" elevation={0} position="absolute" style={{ background: "#fff" }}>
                 <Toolbar
                     style={{
 
@@ -79,7 +79,7 @@ const Chat = (props: any) => {
 
             <Box className="chatBoxHolder" style={{ height: "calc(100vh - 160px)" }}>
 
-            
+
                 {
                     selectedUser.messages && selectedUser.messages.map((cht: any) => {
                         console.log(selectedUser.userId === cht.userId)
@@ -96,7 +96,7 @@ const Chat = (props: any) => {
                                         </ListItemAvatar>
                                         <ListItemText>
                                             <div className="messageInfoUser">
-                                                <span>{cht.userId}</span>
+                                                <span>{getNameOrMobileNumber(cht.userId)}</span>
                                                 <span>9.30 AM</span>
                                             </div>
                                         </ListItemText>
