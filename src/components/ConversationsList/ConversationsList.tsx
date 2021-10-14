@@ -23,7 +23,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
     const ConversationData = useContext(InboxContext);
     const [conversationData, setConversationData] = useState(ConversationData);
     const [openArchived, setOpenArchived] = useState(false);
-
+    const [isToggleEnabled, setToggleEnabled] = useState(false)
     useEffect(() => {
 
         setConversationData(ConversationData)
@@ -144,7 +144,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                             </Box>
 
                                             <Box className="textMessage" component="div" style={{ whiteSpace: 'nowrap', width: "100%", maxWidth: "210px", margin: "0px auto 0px 0px ", fontSize: "12px" }} sx={{
-                                                textOverflow: 'ellipsis', my: 2,
+                                                my: 2,
                                                 overflow: 'hidden',
                                             }}>
 
@@ -161,7 +161,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                 </InfiniteScroll>
             </Grid>
             <Dialog open={openArchived} onClose={() => setOpenArchived(false)}>
-                <DialogTitle>Show Archived  <Switch {...label} /></DialogTitle>
+                <DialogTitle>Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
                 <Divider />
                 <DialogContent>
                     <FormControl sx={{ m: 1, width: 300 }}>
@@ -185,14 +185,16 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
+                <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
                     <Button onClick={() => {
-                        showarchiveChat();
+                        showarchiveChat(isToggleEnabled);
                         setOpenArchived(false);
                     }
                     }>Apply</Button>
-                    <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
+                    
 
                 </DialogActions>
+           
             </Dialog>
         </Grid>
     );
