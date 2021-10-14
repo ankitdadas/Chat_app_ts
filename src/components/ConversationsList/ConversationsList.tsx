@@ -147,7 +147,8 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                                 textOverflow: 'ellipsis', my: 2,
                                                 overflow: 'hidden',
                                             }}>
-                                                {c.lastMessage.message}
+
+                                                {c.lastMessage.message.substring(0, 75) + '...'}
                                             </Box>
                                         </Grid>
                                     </Grid>

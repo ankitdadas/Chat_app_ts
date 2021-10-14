@@ -119,19 +119,6 @@ text-align: center;
             max-width: 95%;
             resize: none;
             font-size: 1rem;
-<<<<<<< HEAD
-            resize: none;
-         }
-
-         .HelperTextChat {
-            
-            
-            padding: 1px 5px;
-            background: #fff;
-            font-size: 14px;
-            display: block;
-            text-align: right;
-=======
             @media #{$smallscreens} {
                 padding: 5px 5px 5px;
               }
@@ -153,7 +140,6 @@ text-align: center;
             @media #{$smallscreens} {
                 font-size: 9px;
               }
->>>>>>> c98805530fb9981e8e6724e5334064fc5cc0ba94
           }
     }
 

@@ -24,7 +24,7 @@ const Chat = (props: any) => {
     } = props || {}
     const [txtMessage, setTxtMessage] = useState('');
     const getNameOrMobileNumber = (userid: any) => {
-       
+
         let { contact }: { contact: any } = conversationList.find((c: any) => c.userId === userid);
 
         if (contact.firstName !== "" && contact.lastName !== "") {
@@ -47,35 +47,36 @@ const Chat = (props: any) => {
                     <Box>
                         <Hidden smUp={true} > <IconButton ><ArrowBackIos /></IconButton></Hidden>
                     </Box>
-                    <Box style={{
-                        textAlign: "right",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                    }}> <Tooltip title="Archive Chat" placement="bottom">
-                            <IconButton >
-                                <Archive onClick={archiveChat} />
-                            </IconButton>
-                        </Tooltip>
-                        {
-                            selectedUser.block === false &&
-                            <Tooltip title="Block Chat" placement="bottom">
-                                <IconButton>
-                                    <Block onClick={() => {
-                                        updateBlockStatus()
-                                    }} />
+                    {selectedUser.archive === false &&
+                        <Box style={{
+                            textAlign: "right",
+                            display: "flex",
+                            justifyContent: "flex-end",
+                        }}> <Tooltip title="Archive Chat" placement="bottom">
+                                <IconButton >
+                                    <Archive onClick={archiveChat} />
                                 </IconButton>
                             </Tooltip>
-                        }
-                         <Hidden smDown={true}>
-                        <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
-                            <IconButton>
-                                {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
-                            </IconButton>
-                        </Tooltip>
-                       </Hidden>
-                    </Box>
+                            {
+                                selectedUser.block === false &&
+                                <Tooltip title="Block Chat" placement="bottom">
+                                    <IconButton>
+                                        <Block onClick={() => {
+                                            updateBlockStatus()
+                                        }} />
+                                    </IconButton>
+                                </Tooltip>
+                            }
+                            <Hidden smDown={true}>
+                                <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
+                                    <IconButton>
+                                        {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
+                                    </IconButton>
+                                </Tooltip>
+                            </Hidden>
+                        </Box>
 
-
+                    }
                 </Toolbar>
             </AppBar>
 
@@ -119,7 +120,7 @@ const Chat = (props: any) => {
             </Box>
 
             {
-                selectedUser.block === false && (
+                selectedUser.block === false && selectedUser.archive === false && (
                     <Box className="bottomChatSectionHolder">
                         <Divider style={{ maxWidth: "100%" }} />
                         <Box
@@ -156,7 +157,7 @@ const Chat = (props: any) => {
                                 <TextareaAutosize
                                     aria-label="Type a message..."
                                     className="textChatSection"
-                                    
+
                                     minRows={1}
                                     maxRows={3}
                                     placeholder="Type a message..."
