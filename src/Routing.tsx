@@ -8,10 +8,11 @@ import TemplatesPage from "./pages/Templates/Templates";
 import FeatureRequestsPage from "./pages/FeatureRequests/FeatureRequests";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ToolsPage from "./pages/Tools/Tools";
+import { Hidden } from "@mui/material";
 const Routing = () => {
   return (
     <>
-      <NavigationBar />
+     <Hidden smDown={true}> <NavigationBar /></Hidden>
       <Switch>
         <Route exact path={["/", "/inbox"]} component={InboxPage} />
         <Route exact path="/campaigns" component={CampaignsPage} />
