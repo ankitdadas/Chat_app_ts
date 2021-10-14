@@ -7,8 +7,8 @@ import {
 import {
     Box, Grid, Button, Typography, IconButton, List,
     ListItemAvatar, ListItemIcon, Badge, Avatar, ListItemText, Paper, Dialog,
-    Select, OutlinedInput, MenuItem, Checkbox, DialogTitle, DialogContent,
-    DialogActions, InputLabel, Divider
+    Select, MenuItem, Checkbox, DialogTitle, DialogContent,
+    DialogActions, Divider, FormControl
 } from "@mui/material";
 import Searchbox from './../SearchBox/SearchBox';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
@@ -23,7 +23,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
     const ConversationData = useContext(InboxContext);
     const [conversationData, setConversationData] = useState(ConversationData);
     const [openArchived, setOpenArchived] = useState(false);
-    const [selectedArchivedUser, setSelectedArchivedUser] = useState('0');
+
     useEffect(() => {
 
         setConversationData(ConversationData)
@@ -130,9 +130,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                         <Grid item xs={12}>
                                             <Box style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
                                                 {c.block && (<Block style={{ fontSize: "13px", marginRight: "3px" }} />)}
-                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px",marginRight: "3px" }} />)}
+                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px", marginRight: "3px" }} />)}
                                                 {c.unread && c.unread.length > 0 && (<span className="dot"></span>)}
-                                                
+
                                             </Box>
 
                                             <Box style={{ display: "flex", justifyContent: "space-between" }}>
@@ -160,27 +160,28 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                 </InfiniteScroll>
             </Grid>
             <Dialog open={openArchived} onClose={() => setOpenArchived(false)}>
-                <DialogTitle>Archive  <Switch {...label} /></DialogTitle>
+                <DialogTitle>Show Archived  <Switch {...label} /></DialogTitle>
                 <Divider />
                 <DialogContent>
-                    <InputLabel id="demo-simple-select-error-label">Age</InputLabel>
-                    <Select sx={{ m: 1, minWidth: 120 }}
-                        labelId="demo-multiple-checkbox-label"
-                        id="demo-multiple-checkbox"
-                        label="Testing"
-                    //input={<OutlinedInput label="Testing" />}
+                    <FormControl sx={{ m: 1, width: 300 }}>
+                        <Select sx={{ m: 1, minWidth: 120 }}
+                            labelId="demo-multiple-checkbox-label"
+                            id="demo-multiple-checkbox"
+                            label="Testing"
 
-                    >
 
-                        <MenuItem key={'Test'} value={'Test'}>
-                            <Checkbox checked={false} />
-                            <ListItemText primary={'Test'} />
-                        </MenuItem>
-                        <MenuItem key={'Test 1'} value={'Test 1'}>
-                            <Checkbox checked={false} />
-                            <ListItemText primary={'Test 1'} />
-                        </MenuItem>
-                    </Select>
+                        >
+
+                            <MenuItem key={'Test'} value={'Test'}>
+                                <Checkbox checked={false} />
+                                <ListItemText primary={'Test'} />
+                            </MenuItem>
+                            <MenuItem key={'Test 1'} value={'Test 1'}>
+                                <Checkbox checked={false} />
+                                <ListItemText primary={'Test 1'} />
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => {

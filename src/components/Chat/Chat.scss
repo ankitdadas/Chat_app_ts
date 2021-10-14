@@ -3,6 +3,7 @@
     position: relative;
     flex-grow: 1;
     background: #fff;
+    height:calc(100vh - 70px);
 }
 
  
@@ -112,15 +113,17 @@ text-align: center;
             padding: 8px 15px 20px;
             max-width: 95%;
             font-size: 1rem;
+            resize: none;
          }
 
          .HelperTextChat {
-            position: absolute;
-            right: 19px;
-            bottom: 1px;
+            
+            
             padding: 1px 5px;
             background: #fff;
             font-size: 14px;
+            display: block;
+            text-align: right;
           }
     }
 

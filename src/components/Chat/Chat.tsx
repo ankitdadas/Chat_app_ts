@@ -77,7 +77,7 @@ const Chat = (props: any) => {
                 </Toolbar>
             </AppBar>
 
-            <Box className="chatBoxHolder" style={{ height: "calc(100vh - 160px)" }}>
+            <Box className="chatBoxHolder" style={{ height: "calc(100vh - 200px)" }}>
 
 
                 {
@@ -154,6 +154,7 @@ const Chat = (props: any) => {
                                 <TextareaAutosize
                                     aria-label="Type a message..."
                                     className="textChatSection"
+                                    
                                     minRows={1}
                                     maxRows={3}
                                     placeholder="Type a message..."
