@@ -12,14 +12,16 @@ const Master = () => {
             <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
                 <Toolbar style={{paddingLeft:16, paddingRight:16}}>
                     
-                <Hidden smUp={true}>
+                    <Hidden  smDown={true}>
                         <IconButton size="large" >
-                            <ReorderOutlinedIcon />
+                            <img alt="Logo" height="40" src={LogoIcon} />
                         </IconButton>
                     </Hidden>
+                    <Hidden smUp={true}>
                     <Link to={"/"}>
                         <img alt="Logo" height="40" src={LogoIcon} />
                     </Link>
+                    </Hidden >
                    
 
 
