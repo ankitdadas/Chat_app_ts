@@ -143,7 +143,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                                 </div>
                                             </Box>
 
-                                            <Box className="textMessage" component="div" style={{ whiteSpace: 'nowrap', width: "100%", maxWidth: "210px", margin: "0px auto", fontSize: "12px" }} sx={{
+                                            <Box className="textMessage" component="div" style={{ whiteSpace: 'nowrap', width: "100%", maxWidth: "210px", margin: "0px auto 0px 0px ", fontSize: "12px" }} sx={{
                                                 textOverflow: 'ellipsis', my: 2,
                                                 overflow: 'hidden',
                                             }}>

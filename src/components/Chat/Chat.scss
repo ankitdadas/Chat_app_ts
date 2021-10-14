@@ -136,6 +136,7 @@ text-align: center;
             padding: 1px 5px;
             background: #fff;
             font-size: 14px;
+            display: block;
 
             @media #{$smallscreens} {
                 font-size: 9px;

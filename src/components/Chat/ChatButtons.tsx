@@ -9,7 +9,7 @@ export default function ChatButtons() {
 
 
   return (
-    <><Hidden smDown={false}>
+    <><Hidden smUp={true}>
       <MenuItem >
       <Tooltip title="Tokens" placement="top">
         <IconButton> <VpnKey style={{ color: "#000" }} />  </IconButton></Tooltip>
