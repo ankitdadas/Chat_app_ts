@@ -45,7 +45,7 @@ const Chat = (props: any) => {
                     }}
                 >
                     <Box>
-                        <Hidden smUp={true} > <IconButton ><ContactsOutlined /></IconButton></Hidden>
+                        <Hidden smUp={true} > <IconButton ><ArrowBackIos /></IconButton></Hidden>
                     </Box>
                     <Box style={{
                         textAlign: "right",
@@ -66,11 +66,13 @@ const Chat = (props: any) => {
                                 </IconButton>
                             </Tooltip>
                         }
+                         <Hidden smDown={true}>
                         <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
                             <IconButton>
                                 {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
                             </IconButton>
                         </Tooltip>
+                       </Hidden>
                     </Box>
 
 

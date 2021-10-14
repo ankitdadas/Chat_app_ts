@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer } from "@mui/material";
+import { Drawer, Hidden } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
@@ -81,11 +81,12 @@ const Inbox = (props: any) => {
                     className="ChatMainPageHolder"
                 //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
                 >
-                    <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />
+                    <Hidden smDown={true}> <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />  </Hidden>
                     <Chat open={open} conversationList={sampleAppContext} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
                         setOpen(false)
                     } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
                 </AppBox>
+                <Hidden smDown={true}>
 
                 {
                     open && (
@@ -109,6 +110,7 @@ const Inbox = (props: any) => {
                         </Drawer>
                     )
                 }
+                </Hidden>
             </React.Fragment>
         </InboxContext.Provider>
     );
