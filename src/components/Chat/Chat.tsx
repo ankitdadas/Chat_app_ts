@@ -79,7 +79,7 @@ const Chat = (props: any) => {
                 </Toolbar>
             </AppBar>
 
-            <Box className="chatBoxHolder" style={{ height: "calc(100vh - 160px)" }}>
+            <Box className="chatBoxHolder"  >
 
 
                 {
