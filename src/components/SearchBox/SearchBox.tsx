@@ -39,7 +39,7 @@ export default function Searchbox({ setUsers }: { setUsers: any }) {
                     setSearchBoxArr([]);
                 }
             }}
-            renderInput={(params) => <TextField  {...params} variant="outlined"   style={{ width: "100%", maxWidth:"265px", borderColor: "#fff", outline: "none", marginLeft: "5px", marginRight: "5px" }}  placeholder="Search"  />}
+            renderInput={(params) => <TextField  {...params} variant="outlined"   style={{ width: "100%", maxWidth:"265px", borderColor: "#fff", outline: "none", marginRight: "5px" }}  placeholder="Search"  />}
         />
     );
 }

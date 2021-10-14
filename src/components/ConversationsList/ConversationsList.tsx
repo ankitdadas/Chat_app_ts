@@ -74,7 +74,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
         <Grid className="conversationBox"  >
 
             <Grid item className="compose-block" xs={12}>
-                <Button
+                <Button disableElevation
                     className="compose-button"
                     variant="contained"
                     size="large"
@@ -86,8 +86,8 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
             </Grid>
             <Grid item xs={12}>
                 <Paper elevation={0}
-                    component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 1 }}
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', }}
+                    component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 0 }}
+                    sx={{ p: '0px 4px', display: 'flex', alignItems: 'center', }}
                 >
                     <Searchbox setUsers={setUsers}></Searchbox>
                     <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">

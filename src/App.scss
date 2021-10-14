@@ -77,6 +77,10 @@
 .mainChatSection {
   margin-top: 65px;
   height: calc(100vh - 70px);
+  
+  @media #{$smallscreens} {
+    margin-top: 57px;
+  }
 }
 
 
