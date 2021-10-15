@@ -16,6 +16,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Moment from "react-moment";
 import InboxContext from "../../contexts/inbox/inbox.context";
 import Switch from '@mui/material/Switch';
+import MultipleSelectGroups from './Group';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }:
@@ -144,8 +145,8 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                             </Box>
 
                                             <Box className="textMessage" component="div" style={{ whiteSpace: 'nowrap', width: "100%", maxWidth: "210px", margin: "0px auto 0px 0px ", fontSize: "12px" }} sx={{
-                                                my: 2,
-                                                overflow: 'hidden',
+                                               textOverflow: 'ellipsis', my: 2,
+                                               overflow: 'hidden',
                                             }}>
 
                                                 {c.lastMessage.message.substring(0, 75) + '...'}
@@ -164,25 +165,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                 <DialogTitle>Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
                 <Divider />
                 <DialogContent>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                        <Select sx={{ m: 1, minWidth: 120 }}
-                            labelId="demo-multiple-checkbox-label"
-                            id="demo-multiple-checkbox"
-                            label="Testing"
-
-
-                        >
-
-                            <MenuItem key={'Test'} value={'Test'}>
-                                <Checkbox checked={false} />
-                                <ListItemText primary={'Test'} />
-                            </MenuItem>
-                            <MenuItem key={'Test 1'} value={'Test 1'}>
-                                <Checkbox checked={false} />
-                                <ListItemText primary={'Test 1'} />
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
+                   <MultipleSelectGroups></MultipleSelectGroups>
                 </DialogContent>
                 <DialogActions>
                 <Button onClick={() => setOpenArchived(false)}>Cancel</Button>

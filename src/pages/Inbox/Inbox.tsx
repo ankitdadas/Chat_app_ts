@@ -51,68 +51,76 @@ const Inbox = (props: any) => {
         const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
         conversationList[tempConversionIndex].archive = true;
         conversationList[tempConversionIndex].showArchive = false;
+        console.log(conversationList);
+        setConversationList([...conversationList].filter(p => p.showArchive === true));
         if (tempConversionIndex < conversationList.length - 1)
             setSelectedUser(conversationList[tempConversionIndex + 1]);
         else if (tempConversionIndex < conversationList.length && conversationList.length > 1) {
             setSelectedUser(conversationList[tempConversionIndex - 1]);
         }
-
-        setConversationList([...conversationList].filter(p => p.showArchive === true));
     }
-    const showarchiveChat: any = () => {
+    const showarchiveChat: any = (isToggleEnabled: boolean) => {
+      
+
+            if (isToggleEnabled) {
+                setConversationList([...sampleAppContext].map((q: any) => {
+
+                    return { ...q, showArchive: true }
+                })
+                );
+
+            } else {
+                setConversationList([...sampleAppContext].filter((q: any) => (q && q.showArchive == true))
+                );
+            }
 
 
-        setConversationList([...sampleAppContext].map((q: any) => {
+        }
+        const updateExpanded: any = (indx: any, contactIndx: any, expanded: boolean) => {
+            const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
+            conversationList[tempConversionIndex].contacts[contactIndx].contact.thirdPartyDetails[indx].expanded = expanded;
+            setConversationList([...conversationList]);
 
-            return { ...q, showArchive: true }
-        })
+        }
+        return (
+            <InboxContext.Provider value={conversationList}>
+                <React.Fragment>
+                    <AppBox open={open}
+                        className="ChatMainPageHolder"
+                    //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
+                    >
+                        <Hidden smDown={true}> <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />  </Hidden>
+                        <Chat open={open} conversationList={sampleAppContext} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
+                            setOpen(false)
+                        } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
+                    </AppBox>
+                    <Hidden smDown={true}>
+
+                        {
+                            open && (
+                                <Drawer
+                                    className="rightSidebarHolder"
+                                    sx={{
+                                        width: "100%",
+                                        maxWidth: drawerWidth,
+                                        flexShrink: 0,
+                                        "& .MuiDrawer-paper": {
+                                            width: "100%",
+                                            maxWidth: drawerWidth,
+                                            boxSizing: "border-box",
+                                        },
+                                    }}
+                                    open={open}
+                                    variant="persistent"
+                                    anchor="right"
+                                >
+                                    <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
+                                </Drawer>
+                            )
+                        }
+                    </Hidden>
+                </React.Fragment>
+            </InboxContext.Provider>
         );
     }
-    const updateExpanded: any = (indx: any, contactIndx: any, expanded: boolean) => {
-        const tempConversionIndex = conversationList.findIndex(c => c.userId === selectedUser.userId);
-        conversationList[tempConversionIndex].contacts[contactIndx].contact.thirdPartyDetails[indx].expanded = expanded;
-        setConversationList([...conversationList]);
-
-    }
-    return (
-        <InboxContext.Provider value={conversationList}>
-            <React.Fragment>
-                <AppBox open={open}
-                    className="ChatMainPageHolder"
-                //style={{ width: `calc(100% - ${drawerWidth}px - 70px)` }}
-                >
-                    <Hidden smDown={true}> <Conversation showarchiveChat={showarchiveChat} setSelectedUserId={selectedUserDetail} selectedUserId={selectedUser.userId} />  </Hidden>
-                    <Chat open={open} conversationList={sampleAppContext} updateBlockStatus={updateBlockStatus} selectedUser={selectedUser} handleDrawerClose={() =>
-                        setOpen(false)
-                    } handleDrawerOpen={() => setOpen(true)} archiveChat={archiveChat} />
-                </AppBox>
-                <Hidden smDown={true}>
-
-                {
-                    open && (
-                        <Drawer
-                            className="rightSidebarHolder"
-                            sx={{
-                                width:"100%",
-                                maxWidth: drawerWidth,
-                                flexShrink: 0,
-                                "& .MuiDrawer-paper": {
-                                    width:"100%",
-                                    maxWidth: drawerWidth,
-                                    boxSizing: "border-box",
-                                },
-                            }}
-                            open={open}
-                            variant="persistent"
-                            anchor="right"
-                        >
-                            <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
-                        </Drawer>
-                    )
-                }
-                </Hidden>
-            </React.Fragment>
-        </InboxContext.Provider>
-    );
-}
-export default Inbox;
+    export default Inbox;

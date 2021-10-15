@@ -47,40 +47,45 @@ const Chat = (props: any) => {
                     <Box>
                         <Hidden smUp={true} > <IconButton ><ArrowBackIos /></IconButton></Hidden>
                     </Box>
-                    {selectedUser.archive === false &&
-                        <Box style={{
-                            textAlign: "right",
-                            display: "flex",
-                            justifyContent: "flex-end",
-                        }}> <Tooltip title="Archive Chat" placement="bottom">
-                                <IconButton >
-                                    <Archive onClick={archiveChat} />
+
+                    <Box style={{
+                        textAlign: "right",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                    }}>
+                        {selectedUser.archive === false &&
+                            <>
+                                <Tooltip title="Archive Chat" placement="bottom">
+                                    <IconButton >
+                                        <Archive onClick={archiveChat} />
+                                    </IconButton>
+                                </Tooltip>
+                                {
+                                    selectedUser.block === false &&
+                                    <Tooltip title="Block Chat" placement="bottom">
+                                        <IconButton>
+                                            <Block onClick={() => {
+                                                updateBlockStatus()
+                                            }} />
+                                        </IconButton>
+                                    </Tooltip>
+                        }
+                        </>
+                            }
+                        <Hidden smDown={true}>
+                            <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
+                                <IconButton>
+                                    {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
                                 </IconButton>
                             </Tooltip>
-                            {
-                                selectedUser.block === false &&
-                                <Tooltip title="Block Chat" placement="bottom">
-                                    <IconButton>
-                                        <Block onClick={() => {
-                                            updateBlockStatus()
-                                        }} />
-                                    </IconButton>
-                                </Tooltip>
-                            }
-                            <Hidden smDown={true}>
-                                <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
-                                    <IconButton>
-                                        {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
-                                    </IconButton>
-                                </Tooltip>
-                            </Hidden>
-                        </Box>
+                        </Hidden>
+                    </Box>
 
-                    }
+
                 </Toolbar>
             </AppBar>
 
-            <Box className="chatBoxHolder" style={{ height: "calc(100vh - 200px)" }}>
+            <Box className="chatBoxHolder"  >
 
 
                 {
