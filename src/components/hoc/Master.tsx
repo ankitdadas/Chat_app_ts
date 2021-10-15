@@ -5,6 +5,7 @@ import { Notifications, HelpOutline, SettingsOutlined } from '@mui/icons-materia
 import LogoIcon from './../../assets/sakari-logo.png';
 import Routing from './../../Routing';
 import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Master = () => {
     return (
@@ -12,16 +13,14 @@ const Master = () => {
             <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
                 <Toolbar style={{paddingLeft:16, paddingRight:16}}>
                     
-                    <Hidden  smDown={true}>
-                        <IconButton size="large" >
-                            <img alt="Logo" height="40" src={LogoIcon} />
-                        </IconButton>
-                    </Hidden>
-                    <Hidden smUp={true}>
+                      
+                            <MenuIcon style={{color:"#000"}}/>                      
+                    
+                    
                     <Link to={"/"}>
                         <img alt="Logo" height="40" src={LogoIcon} />
                     </Link>
-                    </Hidden >
+                    
                    
 
 
