@@ -30,6 +30,10 @@ const useStyles = makeStyles({
     boxShadow: "0px 0px 17px #00000026 ",
     paddingLeft: "0px !important",
     paddingRight: "0px !important",
+    "@media and screen (max-width: 767px)": {
+       display:"none"
+    }
+
   },
 
   loginLogo: {
