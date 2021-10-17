@@ -9,12 +9,10 @@ function App() {
     <div className="app-container">
       <Router>
       {/*  
-      <LoginV2/>
+         <Master /> 
        <Login/>
       */}
-      
-     <Master /> 
-      
+        <LoginV2/>      
       </Router>
     </div>
   );

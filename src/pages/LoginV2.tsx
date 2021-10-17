@@ -30,9 +30,14 @@ const useStyles = makeStyles({
     boxShadow: "0px 0px 17px #00000026 ",
     paddingLeft: "0px !important",
     paddingRight: "0px !important",
-    "@media and screen (max-width: 767px)": {
-       display:"none"
-    }
+    "@media screen and (max-width: 960px)": {      
+       borderRadius: "5px",
+       maxWidth:"600px",
+    },
+    "@media screen and (max-width: 767px)": {      
+      borderRadius: "5px",
+      maxWidth:"95%",
+   },
 
   },
 
@@ -68,17 +73,30 @@ const useStyles = makeStyles({
     justifyContent: "flex-end",
     alignItems: "flex-end",
     padding: "0px 25px",
-    height: "100%"
+    height: "100%",
+    "& img":{
+      maxWidth: "70%", 
+      margin: "10px auto",
+
+      "@media screen and (max-width: 960px)": {
+        maxWidth: "50%", 
+     }
+
+    },
 
   },
 
   loginBox: {
-
     maxWidth: "475px",
     padding: "25px",
     margin: "50px auto",
-
     justifyContent: "flex-start",
+
+    "@media screen and (max-width: 960px)": {      
+      margin: "50px auto 20px",
+   },
+
+
     "& h2": {
       fontSize: "50px",
       textAlign: "left",
@@ -86,19 +104,36 @@ const useStyles = makeStyles({
       marginBottom: 10,
       color: "#2D7DEC",
       marginTop:40,
+      "@media screen and (max-width: 960px)": {
+        
+        marginTop:20,
+     }, 
+     "@media screen and (max-width: 767px)": {
+      fontSize: "20px",
+      marginTop:40,
+   },
     },
+
+
     "& h5": {
       fontSize: "15px",
       textAlign: "left",
       fontWeight: "400",
       paddingLeft: 10,
       marginBottom: 30,
+      "@media screen and (max-width: 767px)": {
+        fontSize: "12px",
+        paddingLeft: 0,
+     }
     },
 
     "& a": {
       textDecoration: "none",
       fontSize: "15px",
       color: "#2F7AE8",
+      "@media screen and (max-width: 767px)": {
+        fontSize: "12px",         
+     }
 
 
     },
@@ -142,7 +177,7 @@ export default function LoginV2() {
           <Grid container className={clsx(classes.loginBoxContainerGrid, 'loginBoxContainerGrid')}>
             <Grid item lg={6} md={6} sm={12} xs={12} style={{ background: "#7793bb", }} alignItems="center">
               <Box className={clsx(classes.loginBoxLeft, 'loginBoxLeft')}  >
-                <img alt="Logo" src={LoginImage} style={{ maxWidth: "70%", margin: "10px auto" }} />
+                <img alt="Logo" src={LoginImage} />
               </Box>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12} alignItems="center" style={{position:"relative"}}>
