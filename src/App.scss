@@ -90,6 +90,12 @@
   align-items: flex-start;
   width: 100%;
 
+  @media #{$ipad} {
+    margin-left: 68px;
+    width: 100% !important;
+    margin-right: 0px !important;
+  }
+
   @media #{$smallscreens} {
     margin-left: 0px;
     width: 100% !important;

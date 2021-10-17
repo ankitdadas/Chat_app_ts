@@ -11,19 +11,11 @@ const Master = () => {
     return (
         <>
             <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
-                <Toolbar style={{paddingLeft:16, paddingRight:16}}>
-                    
-                      
-                            <MenuIcon style={{color:"#000"}}/>                      
-                    
+                <Toolbar style={{ paddingLeft: 16, paddingRight: 16 }}>
                     
                     <Link to={"/"}>
                         <img alt="Logo" height="40" src={LogoIcon} />
                     </Link>
-                    
-                   
-
-
                     <Typography variant="h6" sx={{ flexGrow: 1 }}>
                         <Link to="/">Inbox</Link>
                     </Typography>
@@ -46,7 +38,7 @@ const Master = () => {
                 </Toolbar>
             </AppBar>
             <Grid container className="mainChatSection">
-                <Routing /> 
+                <Routing />
             </Grid>
         </>
 

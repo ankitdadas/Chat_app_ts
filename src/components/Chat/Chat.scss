@@ -137,6 +137,9 @@ text-align: center;
             background: #fff;
             font-size: 14px;
             display: block;
+            @media #{$ipad} {
+                font-size: 9px;
+              }
 
             @media #{$smallscreens} {
                 font-size: 9px;
