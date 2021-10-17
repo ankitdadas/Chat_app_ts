@@ -91,7 +91,12 @@ const Inbox = (props: any) => {
 
                 {
                     open && (
-                        <><Hidden mdDown={true}>
+                        <>
+                        
+                        
+                        
+                        {/* =========== this is for desktop ==============*/}
+                        <Hidden mdDown={false}>
                                 <Drawer
                                     className="rightSidebarHolder"
                                     sx={{
@@ -108,11 +113,15 @@ const Inbox = (props: any) => {
                                    variant="persistent"
                                     anchor="right"
                                 >
-                                    1
+                                    
                                     <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
                                 </Drawer>
                             </Hidden>
-                            <Hidden mdDown={true}>
+
+
+
+                        {/* =========== this is for Mobile and Ipad ==============*/}
+                            <Hidden mdUp={true}>
                                     <Drawer
                                         className="rightSidebarHolder"
                                         sx={{
@@ -136,7 +145,8 @@ const Inbox = (props: any) => {
                                         </Box>
                                         <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
                                     </Drawer>
-                                </Hidden></>
+                                </Hidden>
+                                </>
                     )
                 }
                 </Hidden>

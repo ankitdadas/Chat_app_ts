@@ -6,6 +6,7 @@ import LogoIcon from './../../assets/sakari-logo.png';
 import Routing from './../../Routing';
 import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccountMenu from './AccountMenu';
 
 const Master = () => {
     return (
@@ -32,7 +33,7 @@ const Master = () => {
                     </Tooltip>
                     <Tooltip title="Settings" placement="bottom">
                         <IconButton size="large" >
-                            <SettingsOutlined></SettingsOutlined>
+                            <AccountMenu /> 
                         </IconButton>
                     </Tooltip>
                 </Toolbar>
