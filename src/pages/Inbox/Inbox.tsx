@@ -34,7 +34,7 @@ const AppBox = styled(MuiBox, {
 
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [conversationList, setConversationList] = useState(sampleAppContext.filter(p => p.showArchive === true) || []);
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
 

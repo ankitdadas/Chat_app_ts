@@ -21,6 +21,8 @@ const Routing = () => {
         <Route exact path="/featurerequests" component={FeatureRequestsPage} />
         <Route exact path="/templates" component={TemplatesPage} />
         <Route exact path="/insights" component={InsightsPage} />
+       
+
       </Switch>
     </>
   );
