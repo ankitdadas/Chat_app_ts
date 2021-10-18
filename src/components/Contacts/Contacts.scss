@@ -1,3 +1,6 @@
+@import "../../variable.scss";
+
+
 .paperBlock {
   padding: 8;
   border: "1px solid black";
@@ -5,48 +8,16 @@
 
 }
 
-.rightSidebarHolder {
-  
+.rightSidebarHolder {  
   .user-block {
     height: 100%;
     width: 100%;
     border-radius: 0px;
   }
+
 }
 
-
-.address-text {
-  height: 21px;
-  width: 54px;
-  left: 1312px;
-  top: 368px;
-  border-radius: nullpx;
-}
-
-.message-spacing {
-  font-size: 16px;
-}
-
-.gearIcon {
-  margin-right: 16px;
-
-  svg {
-    color: #AAB2B8;
-    height: 22px;
-    width: 22px;
-    left: 1px;
-    top: 1px;
-    border-radius: 0px;
-    margin-right: 16px;
-  }
-}
-
-
-
-
-
-
-
+ 
 .italic-text {
   font-style: italic;
 }
@@ -134,4 +105,7 @@
   overflow: auto;
   border-radius: 10px;
   background: #EAF0FF;
+  @media #{$ipad} {
+    height: calc(100vh - 380px);
+  }
 }

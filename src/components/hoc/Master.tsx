@@ -6,24 +6,17 @@ import LogoIcon from './../../assets/sakari-logo.png';
 import Routing from './../../Routing';
 import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccountMenu from './AccountMenu';
 
 const Master = () => {
     return (
         <>
             <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
-                <Toolbar style={{paddingLeft:16, paddingRight:16}}>
-                    
-                      
-                            <MenuIcon style={{color:"#000"}}/>                      
-                    
+                <Toolbar style={{ paddingLeft: 16, paddingRight: 16 }}>
                     
                     <Link to={"/"}>
                         <img alt="Logo" height="40" src={LogoIcon} />
                     </Link>
-                    
-                   
-
-
                     <Typography variant="h6" sx={{ flexGrow: 1 }}>
                         <Link to="/">Inbox</Link>
                     </Typography>
@@ -40,13 +33,13 @@ const Master = () => {
                     </Tooltip>
                     <Tooltip title="Settings" placement="bottom">
                         <IconButton size="large" >
-                            <SettingsOutlined></SettingsOutlined>
+                            <AccountMenu /> 
                         </IconButton>
                     </Tooltip>
                 </Toolbar>
             </AppBar>
             <Grid container className="mainChatSection">
-                <Routing /> 
+                <Routing />
             </Grid>
         </>
 

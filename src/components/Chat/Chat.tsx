@@ -139,9 +139,9 @@ const Chat = (props: any) => {
                                 }}
                             >
 
-                                <Hidden smUp={true}> <ChatButtonsHolder /></Hidden>
+                                <Hidden mdUp={true}> <ChatButtonsHolder /></Hidden>
 
-                                <Hidden smDown={true}> <ChatButtons /></Hidden>
+                                <Hidden mdDown={true}> <ChatButtons /></Hidden>
 
                             </Box>
                             <Box

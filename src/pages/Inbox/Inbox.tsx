@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer, Hidden } from "@mui/material";
+import { Box, Drawer, Hidden, IconButton } from "@mui/material";
 import Conversation from "../../components/ConversationsList/ConversationsList";
 
 import Chat from "./../../components/Chat/Chat";
@@ -8,6 +8,7 @@ import Contacts from './../../components/Contacts/Contacts';
 import MuiBox, { BoxProps as MuiAppBarProps } from '@mui/material/Box';
 import InboxContext, { InboxInterface } from './../../contexts/inbox/inbox.context';
 import { styled } from '@mui/material/styles';
+import CloseIcon from '@mui/icons-material/Close';
 const drawerWidth = 335;
 
 interface AppBarProps extends MuiAppBarProps {
@@ -90,24 +91,62 @@ const Inbox = (props: any) => {
 
                 {
                     open && (
-                        <Drawer
-                            className="rightSidebarHolder"
-                            sx={{
-                                width:"100%",
-                                maxWidth: drawerWidth,
-                                flexShrink: 0,
-                                "& .MuiDrawer-paper": {
-                                    width:"100%",
-                                    maxWidth: drawerWidth,
-                                    boxSizing: "border-box",
-                                },
-                            }}
-                            open={open}
-                            variant="persistent"
-                            anchor="right"
-                        >
-                            <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
-                        </Drawer>
+                        <>
+                        
+                        
+                        
+                        {/* =========== this is for desktop ==============*/}
+                        <Hidden mdDown={false}>
+                                <Drawer
+                                    className="rightSidebarHolder"
+                                    sx={{
+                                        width: "100%",
+                                        maxWidth: drawerWidth,
+                                        flexShrink: 0,
+                                        "& .MuiDrawer-paper": {
+                                            width: "100%",
+                                            maxWidth: drawerWidth,
+                                            boxSizing: "border-box",
+                                        },
+                                    }}
+                                    open={open}
+                                   variant="persistent"
+                                    anchor="right"
+                                >
+                                    
+                                    <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
+                                </Drawer>
+                            </Hidden>
+
+
+
+                        {/* =========== this is for Mobile and Ipad ==============*/}
+                            <Hidden mdUp={true}>
+                                    <Drawer
+                                        className="rightSidebarHolder"
+                                        sx={{
+                                            width: "100%",
+                                            maxWidth: drawerWidth,
+                                            flexShrink: 0,
+                                            "& .MuiDrawer-paper": {
+                                                width: "100%",
+                                                maxWidth: drawerWidth,
+                                                boxSizing: "border-box",
+                                            },
+                                        }}
+                                        open={open}
+                                       // variant="persistent"
+                                        anchor="right"
+                                    >
+                                        <Box>
+                                            <IconButton >
+                                                 <CloseIcon />
+                                            </IconButton>
+                                        </Box>
+                                        <Contacts updateExpanded={updateExpanded} selectedUser={selectedUser} />
+                                    </Drawer>
+                                </Hidden>
+                                </>
                     )
                 }
                 </Hidden>
