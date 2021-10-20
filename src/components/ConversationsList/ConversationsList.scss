@@ -1,7 +1,5 @@
  
-  .block-spacing {   
- 
-  }
+  @import "../../variable.scss";
   
   .white-bg {
     background-color: white;
@@ -14,7 +12,7 @@
  }
 
   .compose-button {    
-    background-color: #31AAB7 !important;   
+  //  background-color: #31AAB7 !important;   
     min-width: 100px;
   }
 
@@ -123,7 +121,11 @@ padding-left: 5px;
 
 
 .textMessage{
-  white-space: nowrap; width: 100%; max-width: 210px; margin: 0px auto 0px 0px ; font-size: 12px;}
+  width: 100%; 
+ // max-width: 210px; 
+  margin: 0px auto 0px 0px ; 
+  font-size: 12px; 
+  word-break: break-word;}
 
 .dot {
   height: 11px;
@@ -197,10 +199,7 @@ border-radius: 0px;
     color: #ffffff;
 }
 
-.scroll {
-  
-  
-}
+ 
 
 .avatar-icon {
   height: 25px !important;
@@ -231,5 +230,9 @@ border-radius: 0px;
   flex-grow: auto;
   width: 100%;
   max-width: 320px;
+  @media #{$smallscreens} {
+    max-width: 100%;
+    padding: 10px 0px 0px 1px;
+  }
 }
 
