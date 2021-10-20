@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { Visibility } from '@mui/icons-material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useAuth0 } from "@auth0/auth0-react";
 const useStyles = makeStyles({
   loginPageHolderMain: {
     background: "#fff",
@@ -134,10 +135,8 @@ const useStyles = makeStyles({
 
 });
 
-
-
-
 export default function LoginV2() {
+  const { user, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   const classes = useStyles();
   const history = useHistory();
   const [emailError, setEmailError] = useState('');
@@ -146,7 +145,7 @@ export default function LoginV2() {
   const [password, setPassword] = useState('');
 
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // eslint-disable-next-line no-console
@@ -171,6 +170,15 @@ export default function LoginV2() {
     }
 
     if (isValid) {
+      const domain = 'dev-res9arij.us.auth0.com';
+      /*  const accessToken = await getAccessTokenSilently({
+         audience: `https://${domain}/api/v2/`,
+         scope: "read:current_user",
+       }); */
+
+
+      const token = await loginWithRedirect();
+
       history.push('/inbox');
     }
 
@@ -251,7 +259,7 @@ export default function LoginV2() {
 
                             }
                           }}
-                          
+
                           endAdornment={
                             <InputAdornment position="end">
                               <IconButton

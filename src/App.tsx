@@ -4,10 +4,12 @@ import Master from "./components/hoc/Master";
 import LoginV2 from "./pages/LoginV2";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
+import LoginButton from './components/LoginButton';
 function App() {
 
   return (
     <div className="app-container">
+      <LoginButton></LoginButton>
       <Router>
         <Master />
         <Switch>
