@@ -26,7 +26,7 @@ const Master = () => {
                             </Hidden>
                             <Hidden smUp={true}>
                                 <Box onClick={() => setShowNavigation(!showNavigation)}>
-                                    <img alt="Logo" height="40" src={LogoIcon} />
+                                    <img alt="Logo" height="40" style={{ marginRight: "20px" }} src={LogoIcon} />
                                 </Box>
                             </Hidden>
                             <Typography variant="h6" sx={{ flexGrow: 1, color: 'black' }} >

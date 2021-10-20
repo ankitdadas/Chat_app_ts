@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         },
         "&:hover" :{
             "& svg":{
-                fill: blueTheme.palette.grey[600]
+                fill: blueTheme.palette.grey[500]
             },
         }, 
     },
@@ -116,6 +116,7 @@ const Chat = (props: any) => {
                                         <ListItemAvatar>
                                             {" "}
                                             <Avatar
+                                          
                                                 alt="Remy Sharp"
                                                 src="https://material-ui.com/static/images/avatar/1.jpg"
                                             />

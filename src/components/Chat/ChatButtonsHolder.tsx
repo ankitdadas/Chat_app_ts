@@ -9,7 +9,7 @@ export default function ChatButtons() {
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
-    
+
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -29,17 +29,17 @@ export default function ChatButtons() {
       </Button>
       <Menu
         id="basic-menu"
-         
+
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        style={{flexDirection:"column", display:"flex"}}
+        style={{ flexDirection: "column", display: "flex" }}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
-      >  
-         <ChatButton />
-         
+      >
+        <ChatButton />
+
       </Menu>
     </div>
   );

@@ -4,6 +4,8 @@ export const blueTheme = createMuiTheme({
   palette: {
    // type: 'light',
     grey: {
+      300:'#858585',
+      400:'#000000',
       500:'#008080',  // color for archive 
       600:'#008080', // color for archive Hover
       700: '#cccccc', // color for left nav 
@@ -38,6 +40,8 @@ export const blueTheme = createMuiTheme({
     },
    // divider: '#DEE1E3',
   },
+
+
  
    
 });

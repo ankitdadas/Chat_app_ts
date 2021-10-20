@@ -13,8 +13,10 @@ import { ThemeContext } from "@mui/styled-engine";
 import { grey } from "@mui/material/colors";
 import blueTheme from "../Config/Theme";
 import { makeStyles } from '@mui/styles';
+ 
 
 const useStyles = makeStyles(theme => ({ 
+    
         sideNavigationHolder :{
             paddingLeft:" 5px !important",
             paddingRight: "5px !important", 
@@ -51,6 +53,7 @@ function NavigationBar() {
     const { pathname } = useLocation();
     return (
         <Drawer
+         
             variant="permanent"
             anchor="left"
             style={{
@@ -58,6 +61,8 @@ function NavigationBar() {
                 justifyContent: "space-between",
             }}
         >
+            
+
             <Toolbar className={classes.sideNavigationHolder}                
                 style={{
                     flexDirection: "column",
