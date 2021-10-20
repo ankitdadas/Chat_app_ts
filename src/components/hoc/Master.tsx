@@ -8,6 +8,7 @@ import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountMenu from './AccountMenu';
 
+
 const Master = () => {
     const location = useLocation();
     const [showNavigation, setShowNavigation] = React.useState(false);
@@ -18,24 +19,16 @@ const Master = () => {
                 <>
                     <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
                         <Toolbar style={{ paddingLeft: 16, paddingRight: 16 }}>
-
-
-
                             <Hidden smDown={true}>
                                 <Link to={"/inbox"}>
-                                    <img alt="Logo" height="40" src={LogoIcon} />
+                                    <img alt="Logo" height="40" style={{ marginRight: "20px" }} src={LogoIcon} />
                                 </Link>
                             </Hidden>
                             <Hidden smUp={true}>
                                 <Box onClick={() => setShowNavigation(!showNavigation)}>
-                                    <img alt="Logo" height="40" src={LogoIcon} />
+                                    <img alt="Logo" height="40" style={{ marginRight: "20px" }} src={LogoIcon} />
                                 </Box>
                             </Hidden>
-
-
-
-
-
                             <Typography variant="h6" sx={{ flexGrow: 1, color: 'black' }} >
                                 Inbox
                             </Typography>
@@ -50,12 +43,7 @@ const Master = () => {
                                     <Notifications />
                                 </IconButton>
                             </Tooltip>
-
-                            <IconButton size="large">
-                                <AccountMenu />
-                            </IconButton>
-
-
+                            <AccountMenu />
                         </Toolbar>
                     </AppBar>
                     <Grid container className="mainChatSection">

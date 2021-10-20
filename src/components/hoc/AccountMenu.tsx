@@ -32,7 +32,7 @@ export default function AccountMenu() {
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
 
         <Tooltip title="Account settings">
-          <IconButton  onClick={handleClick}>
+          <IconButton size="large"  onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
         </Tooltip>

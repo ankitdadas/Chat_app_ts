@@ -13,7 +13,8 @@ const MenuProps = {
     PaperProps: {
         style: {
             maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
+            maxWidth:"300px",
+            width:"100%",
         },
     },
 };
@@ -37,9 +38,12 @@ export default function MultipleSelectGroups() {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 250 }}>
+            <FormControl sx={{ m: 1, 
+           //  maxWidth: "300px",
+             width:"100%",
+        }}>
 
-                <Select sx={{ m: 1, minWidth: 120 }}
+                <Select sx={{ m: 1, minWidth: 120, maxWidth:"100%", }}
                     labelId="demo-multiple-checkbox-label"
                     id="demo-multiple-checkbox"
                     multiple

@@ -82,7 +82,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                     className="compose-button"
                     variant="contained"
                     size="large"
-                    color="primary"
+                    color="secondary"
                 >
                     <ModeEditOutlinedIcon />
                     <Typography className="compose-text">Compose</Typography>
@@ -150,11 +150,11 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                                             </Box>
 
                                             <Box className="textMessage" component="div" sx={{
-                                                textOverflow: 'ellipsis',
-                                                overflow: 'hidden',
+                                                // textOverflow: 'ellipsis',
+                                               // overflow: 'hidden',
                                             }}>
 
-                                                {c.lastMessage.message.substring(0, 75) + '...'}
+                                                {c.lastMessage.message.substring(0, 60) + '...'}
                                             </Box>
                                         </Grid>
                                     </Grid>
@@ -167,12 +167,12 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                 </InfiniteScroll>
             </Grid>
             <Dialog fullWidth={true}
-                maxWidth={'md'}
+                maxWidth={'xs'}
                 open={openArchived} onClose={() => setOpenArchived(false)}>
                 <DialogTitle>Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
                 <Divider />
                 <DialogContent>
-                    <MultipleSelectGroups></MultipleSelectGroups>
+                    <MultipleSelectGroups /> 
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpenArchived(false)}>Cancel</Button>

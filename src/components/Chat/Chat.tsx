@@ -9,10 +9,27 @@ import {
 } from '@mui/icons-material';
 import ChatButtonsHolder from "./ChatButtonsHolder";
 import ChatButtons from "./ChatButtons";
+import { grey } from "@mui/material/colors";
+import blueTheme from "../Config/Theme";
+import { makeStyles } from '@mui/styles';
 
-
+const useStyles = makeStyles(theme => ({ 
+     
+      archiveBtn:{
+        "& svg":{
+            fill: blueTheme.palette.grey[500]
+        },
+        "&:hover" :{
+            "& svg":{
+                fill: blueTheme.palette.grey[500]
+            },
+        }, 
+    },
+    
+}));
 
 const Chat = (props: any) => {
+    const classes = useStyles();
     const {
         open,
         handleDrawerOpen,
@@ -57,15 +74,15 @@ const Chat = (props: any) => {
                         {selectedUser.archive === false &&
                             <>
                                 <Tooltip title="Archive Chat" placement="bottom">
-                                    <IconButton >
-                                        <Archive onClick={archiveChat} />
+                                    <IconButton className={classes.archiveBtn} >
+                                        <Archive  onClick={archiveChat} />
                                     </IconButton>
                                 </Tooltip>
                                 {
                                     selectedUser.block === false &&
                                     <Tooltip title="Block Chat" placement="bottom">
-                                        <IconButton>
-                                            <Block onClick={() => {
+                                        <IconButton >
+                                            <Block  color="error" onClick={() => {
                                                 updateBlockStatus()
                                             }} />
                                         </IconButton>
@@ -76,7 +93,7 @@ const Chat = (props: any) => {
                         <Hidden smDown={true}>
                             <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
                                 <IconButton>
-                                    {open === true ? <ArrowForwardIos onClick={handleDrawerClose} /> : <ArrowBackIos onClick={handleDrawerOpen} />}
+                                    {open === true ? <ArrowForwardIos color="info" onClick={handleDrawerClose} /> : <ArrowBackIos color="info" onClick={handleDrawerOpen} />}
                                 </IconButton>
                             </Tooltip>
                         </Hidden>
@@ -99,6 +116,7 @@ const Chat = (props: any) => {
                                         <ListItemAvatar>
                                             {" "}
                                             <Avatar
+                                          
                                                 alt="Remy Sharp"
                                                 src="https://material-ui.com/static/images/avatar/1.jpg"
                                             />
