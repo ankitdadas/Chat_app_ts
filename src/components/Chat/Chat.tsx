@@ -20,7 +20,8 @@ const Chat = (props: any) => {
         archiveChat,
         updateBlockStatus,
         selectedUser,
-        conversationList
+        conversationList,
+        handleConversationList
     } = props || {}
     const [txtMessage, setTxtMessage] = useState('');
     const getNameOrMobileNumber = (userid: any) => {
@@ -44,8 +45,8 @@ const Chat = (props: any) => {
                         justifyContent: "space-between",
                     }}
                 >
-                    <Box>
-                        <Hidden smUp={true} > <IconButton ><ArrowBackIos /></IconButton></Hidden>
+                    <Box >
+                        <Hidden smUp={true} > <IconButton onClick={handleConversationList} ><ArrowBackIos /></IconButton></Hidden>
                     </Box>
 
                     <Box style={{
@@ -69,9 +70,9 @@ const Chat = (props: any) => {
                                             }} />
                                         </IconButton>
                                     </Tooltip>
+                                }
+                            </>
                         }
-                        </>
-                            }
                         <Hidden smDown={true}>
                             <Tooltip placement="bottom" title={open === true ? "Hide Right Panel" : "Show Right Panel"}>
                                 <IconButton>
@@ -92,7 +93,7 @@ const Chat = (props: any) => {
                     selectedUser.messages && selectedUser.messages.map((cht: any) => {
                         console.log(selectedUser.userId === cht.userId)
                         return (
-                            <Box className={`chatSection ${selectedUser.userId === cht.userId && 'right'} `}>
+                            <Box onClick={() => handleConversationList()} className={`chatSection ${selectedUser.userId === cht.userId && 'right'} `}>
                                 <List className="chatBox">
                                     <Box className="messageInfoBox">
                                         <ListItemAvatar>
@@ -145,9 +146,9 @@ const Chat = (props: any) => {
                                 }}
                             >
 
-                                <Hidden smUp={true}> <ChatButtonsHolder /></Hidden>
+                                <Hidden mdUp={true}> <ChatButtonsHolder /></Hidden>
 
-                                <Hidden smDown={true}> <ChatButtons /></Hidden>
+                                <Hidden mdDown={true}> <ChatButtons /></Hidden>
 
                             </Box>
                             <Box

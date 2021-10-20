@@ -37,7 +37,7 @@ export default function MultipleSelectGroups() {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl sx={{ m: 1, width: 250 }}>
 
                 <Select sx={{ m: 1, minWidth: 120 }}
                     labelId="demo-multiple-checkbox-label"

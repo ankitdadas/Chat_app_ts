@@ -2,14 +2,15 @@ import "./ConversationsList.scss";
 import React, { useContext, useState, useEffect } from "react";
 import {
     WhatsApp, SmsOutlined, FilterListOutlined, Block,
-    LockOutlined
+    LockOutlined, ArrowForwardIos
 } from '@mui/icons-material';
 import {
     Box, Grid, Button, Typography, IconButton, List,
     ListItemAvatar, ListItemIcon, Badge, Avatar, ListItemText, Paper, Dialog,
     Select, MenuItem, Checkbox, DialogTitle, DialogContent,
-    DialogActions, Divider, FormControl
+    DialogActions, Divider, FormControl, Hidden, useMediaQuery
 } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 import Searchbox from './../SearchBox/SearchBox';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -19,12 +20,14 @@ import Switch from '@mui/material/Switch';
 import MultipleSelectGroups from './Group';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
-const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }:
-    { setSelectedUserId: any, selectedUserId: any, showarchiveChat: any }) => {
+const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, handleConversationList }:
+    { setSelectedUserId: any, selectedUserId: any, showarchiveChat: any, handleConversationList: any }) => {
     const ConversationData = useContext(InboxContext);
     const [conversationData, setConversationData] = useState(ConversationData);
     const [openArchived, setOpenArchived] = useState(false);
-    const [isToggleEnabled, setToggleEnabled] = useState(false)
+    const [isToggleEnabled, setToggleEnabled] = useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     useEffect(() => {
 
         setConversationData(ConversationData)
@@ -84,6 +87,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                     <ModeEditOutlinedIcon />
                     <Typography className="compose-text">Compose</Typography>
                 </Button>
+               
             </Grid>
             <Grid item xs={12}>
                 <Paper elevation={0}
@@ -112,8 +116,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                         return (
                             <List
                                 onClick={() => {
-                                    console.log(c.userId);
-                                    setSelectedUserId(c.userId)
+                                    
+                                    setSelectedUserId(c.userId);
+                                    handleConversationList();
                                 }}
                                 className={`message-block ${selectedUserId === c.userId && 'active'} ${indx % 2 === 0 ? " white-bg" : "blue-bg"
                                     }`}
@@ -144,9 +149,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
                                                 </div>
                                             </Box>
 
-                                            <Box className="textMessage" component="div" style={{ whiteSpace: 'nowrap', width: "100%", maxWidth: "210px", margin: "0px auto 0px 0px ", fontSize: "12px" }} sx={{
-                                               textOverflow: 'ellipsis', my: 2,
-                                               overflow: 'hidden',
+                                            <Box className="textMessage" component="div" sx={{
+                                                textOverflow: 'ellipsis',
+                                                overflow: 'hidden',
                                             }}>
 
                                                 {c.lastMessage.message.substring(0, 75) + '...'}
@@ -161,23 +166,25 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat }
 
                 </InfiniteScroll>
             </Grid>
-            <Dialog open={openArchived} onClose={() => setOpenArchived(false)}>
+            <Dialog fullWidth={true}
+                maxWidth={'md'}
+                open={openArchived} onClose={() => setOpenArchived(false)}>
                 <DialogTitle>Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
                 <Divider />
                 <DialogContent>
-                   <MultipleSelectGroups></MultipleSelectGroups>
+                    <MultipleSelectGroups></MultipleSelectGroups>
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
+                    <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
                     <Button onClick={() => {
                         showarchiveChat(isToggleEnabled);
                         setOpenArchived(false);
                     }
                     }>Apply</Button>
-                    
+
 
                 </DialogActions>
-           
+
             </Dialog>
         </Grid>
     );

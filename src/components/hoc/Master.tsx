@@ -6,25 +6,31 @@ import LogoIcon from './../../assets/sakari-logo.png';
 import Routing from './../../Routing';
 import ReorderOutlinedIcon from '@mui/icons-material/ReorderOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccountMenu from './AccountMenu';
 
 const Master = () => {
     const location = useLocation();
-
-
+    const [showNavigation, setShowNavigation] = React.useState(false);
     return (
 
         <>
-            {location.pathname !== "/login" && location.pathname !== "/login1" &&
+            {location.pathname !== "/" &&
                 <>
                     <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
                         <Toolbar style={{ paddingLeft: 16, paddingRight: 16 }}>
 
 
-                           
 
-                            <Link to={"/"}>
-                                <img alt="Logo" height="40" src={LogoIcon} />
-                            </Link>
+                            <Hidden smDown={true}>
+                                <Link to={"/inbox"}>
+                                    <img alt="Logo" height="40" src={LogoIcon} />
+                                </Link>
+                            </Hidden>
+                            <Hidden smUp={true}>
+                                <Box onClick={() => setShowNavigation(!showNavigation)}>
+                                    <img alt="Logo" height="40" src={LogoIcon} />
+                                </Box>
+                            </Hidden>
 
 
 
@@ -44,15 +50,16 @@ const Master = () => {
                                     <Notifications />
                                 </IconButton>
                             </Tooltip>
-                            <Tooltip title="Settings" placement="bottom">
-                                <IconButton size="large" >
-                                    <SettingsOutlined></SettingsOutlined>
-                                </IconButton>
-                            </Tooltip>
+
+                            <IconButton size="large">
+                                <AccountMenu />
+                            </IconButton>
+
+
                         </Toolbar>
                     </AppBar>
                     <Grid container className="mainChatSection">
-                        <Routing />
+                        <Routing showNavigation={showNavigation} />
                     </Grid>
                 </>
             }

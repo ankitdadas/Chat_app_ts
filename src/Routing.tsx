@@ -9,19 +9,21 @@ import FeatureRequestsPage from "./pages/FeatureRequests/FeatureRequests";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ToolsPage from "./pages/Tools/Tools";
 import { Hidden } from "@mui/material";
-const Routing = () => {
+const Routing = ({ showNavigation }:
+  { showNavigation: any }) => {
   return (
     <>
-     <Hidden smDown={true}> <NavigationBar /></Hidden>
+      <Hidden smDown={true}> <NavigationBar /></Hidden>
+      <Hidden smUp={true}>{showNavigation === true && <NavigationBar />}</Hidden>
       <Switch>
-        <Route exact path={["/", "/inbox"]} component={InboxPage} />
+        <Route exact path={["/inbox"]} component={InboxPage} />
         <Route exact path="/campaigns" component={CampaignsPage} />
         <Route exact path="/contacts" component={ContactsPage} />
         <Route exact path="/tools" component={ToolsPage} />
         <Route exact path="/featurerequests" component={FeatureRequestsPage} />
         <Route exact path="/templates" component={TemplatesPage} />
         <Route exact path="/insights" component={InsightsPage} />
-       
+
 
       </Switch>
     </>
