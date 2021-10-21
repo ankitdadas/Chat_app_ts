@@ -37,13 +37,14 @@ export default function MultipleSelectGroups() {
     };
 
     return (
-        <div>
+        <>
             <FormControl sx={{ m: 1, 
            //  maxWidth: "300px",
              width:"100%",
+             margin:"0px",
         }}>
 
-                <Select sx={{ m: 1, minWidth: 120, maxWidth:"100%", }}
+                <Select sx={{ m: 1, minWidth: 110, maxWidth:"100%", }}
                     labelId="demo-multiple-checkbox-label"
                     id="demo-multiple-checkbox"
                     multiple
@@ -61,6 +62,6 @@ export default function MultipleSelectGroups() {
                     ))}
                 </Select>
             </FormControl>
-        </div>
+        </>
     );
 }
