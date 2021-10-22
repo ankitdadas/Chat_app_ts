@@ -113,7 +113,7 @@ text-align: center;
         
         .textChatSection{
             width: 100%;
-            border: 0px;
+            border: 1px #fff solid;
             background: #fff;
             padding: 5px 15px 5px;
             max-width: 95%;
@@ -127,7 +127,7 @@ text-align: center;
                    
               }
               &:focus-visible{
-                outline-color: #CCC;
+                outline-color: #0078ce;
             }
          }
 

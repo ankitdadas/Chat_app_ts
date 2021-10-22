@@ -10,7 +10,7 @@ import {
     Select, MenuItem, Checkbox, DialogTitle, DialogContent,
     DialogActions, Divider, FormControl, Hidden, useMediaQuery
 } from "@mui/material";
-import { useTheme } from '@mui/material/styles';
+
 import Searchbox from './../SearchBox/SearchBox';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -18,6 +18,31 @@ import Moment from "react-moment";
 import InboxContext from "../../contexts/inbox/inbox.context";
 import Switch from '@mui/material/Switch';
 import MultipleSelectGroups from './Group';
+import blueTheme from "../Config/Theme";
+import { makeStyles, useTheme } from '@mui/styles';
+
+
+const useStyles: any = makeStyles(() => ({
+    cancelBtn: {
+        background: blueTheme.palette.error.main,
+        "&:hover":{
+            background: blueTheme.palette.error.dark,
+        }
+    },
+    
+    submitBtn: {
+        background: blueTheme.palette.primary.main,
+        "&:hover":{
+            background: blueTheme.palette.primary.dark,
+        }
+    },
+    
+
+}));
+
+
+
+
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, handleConversationList }:
@@ -26,7 +51,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
     const [conversationData, setConversationData] = useState(ConversationData);
     const [openArchived, setOpenArchived] = useState(false);
     const [isToggleEnabled, setToggleEnabled] = useState(false);
-    const theme = useTheme();
+    const classes = useStyles();
+    const theme: any = useTheme();
+
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     useEffect(() => {
 
@@ -59,9 +86,9 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
     const getStatusIcon = (type: string) => {
         switch (type) {
             case "whatsApp":
-                return <WhatsApp style={{ backgroundColor: "#3965FF", color: "#fff", borderRadius: "25px", fontSize: 14 }}></WhatsApp>;
+                return <WhatsApp style={{ backgroundColor: "#3965FF", border: "4px #3965FF solid", color: "#fff", borderRadius: "25px", fontSize: 16 }} />;
             case "sms":
-                return <SmsOutlined style={{ backgroundColor: "#3965FF", color: "#fff", borderRadius: "25px", fontSize: 14 }}></SmsOutlined>;
+                return <SmsOutlined style={{ backgroundColor: "#3965FF", border: "4px #3965FF solid", color: "#fff", borderRadius: "25px", fontSize: 16 }} />;
             default:
                 return <></>;
         }
@@ -87,15 +114,15 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                     <ModeEditOutlinedIcon />
                     <Typography className="compose-text">Compose</Typography>
                 </Button>
-               
+
             </Grid>
             <Grid item xs={12}>
                 <Paper elevation={0}
                     component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 0 }}
                     sx={{ p: '0px 4px', display: 'flex', alignItems: 'center', }}
                 >
-                    <Searchbox setUsers={setUsers}></Searchbox>
-                    <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+                    <Searchbox setUsers={setUsers} />
+                    <IconButton sx={{ p: '10px' }} aria-label="directions">
                         <FilterListOutlined onClick={() => setOpenArchived(true)} />
                     </IconButton>
                 </Paper>
@@ -116,7 +143,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                         return (
                             <List
                                 onClick={() => {
-                                    
+
                                     setSelectedUserId(c.userId);
                                     handleConversationList();
                                 }}
@@ -127,7 +154,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                                     <ListItemIcon>
                                         <Badge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                             badgeContent={getStatusIcon(c.type)}                                        >
-                                            <Avatar style={{ width: "40px" }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                                            <Avatar style={{ width: "52px", height: "52px" }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
                                         </Badge>
                                     </ListItemIcon>
                                 </ListItemAvatar>
@@ -135,8 +162,8 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Box style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-                                                {c.block && (<Block style={{ fontSize: "13px", marginRight: "3px" }} />)}
-                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px", marginRight: "3px" }} />)}
+                                                {c.block && (<Block style={{ fontSize: "13px", marginRight: "3px" }} color="error" />)}
+                                                {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px", marginRight: "3px", color: blueTheme.palette.grey[500] }} />)}
                                                 {c.unread && c.unread.length > 0 && (<span className="dot"></span>)}
 
                                             </Box>
@@ -151,7 +178,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
 
                                             <Box className="textMessage" component="div" sx={{
                                                 // textOverflow: 'ellipsis',
-                                               // overflow: 'hidden',
+                                                // overflow: 'hidden',
                                             }}>
 
                                                 {c.lastMessage.message.substring(0, 60) + '...'}
@@ -166,17 +193,18 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
 
                 </InfiniteScroll>
             </Grid>
+
             <Dialog fullWidth={true}
                 maxWidth={'xs'}
                 open={openArchived} onClose={() => setOpenArchived(false)}>
-                <DialogTitle>Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
-                <Divider />
-                <DialogContent>
-                    <MultipleSelectGroups /> 
+                <DialogTitle style={{ fontSize: "1.2rem", paddingLeft: "10px", paddingRight: "10px" }} >Show Archived  <Switch {...label} checked={isToggleEnabled} onChange={() => setToggleEnabled(!isToggleEnabled)} /></DialogTitle>
+
+                <DialogContent style={{ paddingLeft: "10px", paddingRight: "10px" }} >
+                    <MultipleSelectGroups />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpenArchived(false)}>Cancel</Button>
-                    <Button onClick={() => {
+                    <Button variant="contained" className={classes.cancelBtn} onClick={() => setOpenArchived(false)}>Cancel</Button>
+                    <Button variant="contained" className={classes.submitBtn} onClick={() => {
                         showarchiveChat(isToggleEnabled);
                         setOpenArchived(false);
                     }

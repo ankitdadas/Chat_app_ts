@@ -19,13 +19,13 @@ export const blueTheme = createMuiTheme({
     },
     primary: {
       main: '#0078CE',
-      dark: '#308140',
+      dark: '#1a79bd',
       contrastText: '#fff',
     },
     error: {
-      main: '#FB3F4B',
-      dark: '#FFEFEF',
-      contrastText: '#FF0000',
+      main: '#e51607',
+      dark: '#FF0000',
+      contrastText: '#FFEFEF',
     },
 
     background: {
@@ -40,8 +40,6 @@ export const blueTheme = createMuiTheme({
     },
    // divider: '#DEE1E3',
   },
-
-
  
    
 });
