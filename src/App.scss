@@ -103,43 +103,7 @@
   }
 }
 
-.sideNavigationHolder {
-  padding-left: 5px !important;
-  padding-right: 5px !important;
 
-  .sideNavigation {
-    li {
-      &:hover {
-        background: #f8f8f8;
-
-        a {
-          color: #000 !important;
-
-          svg {
-            fill: #000;
-          }
-        }
-      }
-
-      a {
-        color: #AAB2B8 !important;
-
-        svg {
-          fill: #AAB2B8;
-        }
-      }
-
-      a.selected {
-        color: #000 !important;
-
-        svg {
-          fill: #000;
-        }
-      }
-
-    }
-  }
-}
 
 .rightSidebarHolder {
 
@@ -153,6 +117,10 @@
 .searchBox {
   margin-left: 5px;
   background: #fff;   
+}
+
+.MuiAvatar-colorDefault{
+  background: #b1b1b1 !important;
 }
 
  

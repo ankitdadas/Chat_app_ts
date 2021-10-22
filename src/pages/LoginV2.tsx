@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { Visibility } from '@mui/icons-material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useAuth0 } from "@auth0/auth0-react";
+import auth0 from 'auth0-js';
 const useStyles = makeStyles({
   loginPageHolderMain: {
     background: "#fff",
@@ -137,6 +138,14 @@ const useStyles = makeStyles({
 
 export default function LoginV2() {
   const { user, loginWithRedirect, getAccessTokenSilently } = useAuth0();
+  var auth0Client = new auth0.WebAuth({
+    domain: "dev-res9arij.us.auth0.com",
+    clientID: "j4BvBd4YlEASv0yx96RLuDuglCUq2VK5",
+    //audience: params.apiAudience,
+    redirectUri: window.location.origin,
+    scope: "read:current_user update:current_user_metadata",
+    responseType: 'token id_token'
+  });
   const classes = useStyles();
   const history = useHistory();
   const [emailError, setEmailError] = useState('');
@@ -177,9 +186,21 @@ export default function LoginV2() {
        }); */
 
 
-      const token = await loginWithRedirect();
+      auth0Client.client.login({
+        realm: 'react-user-demo',
+        username: email,
+        password
+      }, (err:any, authResult:any) => {
+        if (err) {
+         console.log("error", err)
+          return
+        }
+        if (authResult) {
+          history.push('/inbox');
+        }
+      })
 
-      history.push('/inbox');
+
     }
 
   };

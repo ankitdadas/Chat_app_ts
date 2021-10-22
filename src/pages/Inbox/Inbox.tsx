@@ -35,11 +35,12 @@ const AppBox = styled(MuiBox, {
 
 const Inbox = (props: any) => {
     const sampleAppContext: InboxInterface[] = ConversationData.data || [];
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [conversationList, setConversationList] = useState(sampleAppContext.filter(p => p.showArchive === true) || []);
     const [selectedUser, setSelectedUser] = useState(sampleAppContext[0])
     const [isMobile, setIsMobile] = useState(false)
-    const [showConversationList, setShowConversationList] = useState(true)
+    const [showConversationList, setShowConversationList] = useState(true);
+    const [openRightPanel, setOpenRightPanel] = useState(false);
     //choose the screen size 
     const handleResize = () => {
 
@@ -51,8 +52,7 @@ const Inbox = (props: any) => {
     }
     const setShowAndHideConversationList: any = (val: boolean) => {
         setShowConversationList(val);
-      
-        setOpen(!val);
+        setOpen(false);
     }
     // create an event listener
     useEffect(() => {
@@ -81,8 +81,6 @@ const Inbox = (props: any) => {
         setConversationList([...conversationList].filter(p => p.showArchive === true));
     }
     const showarchiveChat: any = () => {
-
-
         setConversationList([...sampleAppContext].map((q: any) => {
 
             return { ...q, showArchive: true }
