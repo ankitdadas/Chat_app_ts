@@ -30,18 +30,18 @@ export default function ChatButtons() {
   const classes = useStyles();
   return (
     <><Hidden smUp={true}>
-      <MenuItem >
+      <MenuItem style={{ paddingLeft:"5px",  paddingRight:"5px",}}>
         <Tooltip title="Tokens" placement="top">
           <IconButton className={classes.navlink}> <VpnKey  />  </IconButton></Tooltip>
       </MenuItem>
-      <MenuItem >
+      <MenuItem style={{ paddingLeft:"5px",  paddingRight:"5px",}}>
         <Tooltip placement="top" title="Links">
           <IconButton className={classes.navlink}> <InsertLinkSharp  />  </IconButton></Tooltip>
       </MenuItem>
-      <MenuItem >
+      <MenuItem style={{ paddingLeft:"5px",  paddingRight:"5px",}}>
         <Tooltip title="Attachments" placement="top"><IconButton className={classes.navlink}> <AttachFileSharp  />  </IconButton></Tooltip>
       </MenuItem>
-      <MenuItem >
+      <MenuItem style={{ paddingLeft:"5px",  paddingRight:"5px",}}>
         <Tooltip placement="top" title="Templates"><IconButton className={classes.navlink}> <TextSnippet  />  </IconButton></Tooltip>
       </MenuItem>
 
