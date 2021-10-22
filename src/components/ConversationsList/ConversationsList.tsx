@@ -24,9 +24,9 @@ import { makeStyles, useTheme } from '@mui/styles';
 
 const useStyles: any = makeStyles(() => ({
     cancelBtn: {
-        background: blueTheme.palette.error.main,
+        background: ` ${blueTheme.palette.error.main} !important`,
         "&:hover":{
-            background: blueTheme.palette.error.dark,
+            background:` ${blueTheme.palette.error.dark} !important`,
         }
     },
     

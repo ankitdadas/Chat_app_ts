@@ -1,46 +1,61 @@
+ 
+
+
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
 import ChatButton from './ChatButtons';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function ChatButtons() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-
   };
   const handleClose = () => {
     setAnchorEl(null);
-
   };
-
   return (
-    <div>
-      <Button
-        id="basic-button"
-        aria-controls="basic-menu"
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        <MoreVertIcon />
-      </Button>
+    <React.Fragment>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+         
+        <Tooltip title="Account settings">
+          <IconButton onClick={handleClick} size="small" sx={{ ml: 1 }}>
+          <MoreVertIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
       <Menu
-        id="basic-menu"
-
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        style={{ flexDirection: "column", display: "flex" }}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+           borderRadius:"100px",
+          
+             
+          },
         }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
         <ChatButton />
-
       </Menu>
-    </div>
+    </React.Fragment>
   );
 }

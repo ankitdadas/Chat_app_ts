@@ -19,6 +19,7 @@ import auth0 from 'auth0-js';
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openAccountMenu, setOpenAccountMenu] = React.useState(false);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
    setOpenAccountMenu(!openAccountMenu);
@@ -41,15 +42,13 @@ export default function AccountMenu() {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', position:"relative" }}>
         <Tooltip title="Account settings">
           <IconButton size="large"  onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
         </Tooltip>
-      </Box>
-      <Menu
+        <Menu
         anchorEl={anchorEl}
         open={openAccountMenu}
         onClose={handleClose}
@@ -81,7 +80,7 @@ export default function AccountMenu() {
           },
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       > 
 
         <MenuItem>
@@ -106,6 +105,10 @@ export default function AccountMenu() {
         </MenuItem>
      
       </Menu>
+      </Box>
+      
     </React.Fragment>
   );
 }
+
+ 
