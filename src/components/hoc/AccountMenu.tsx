@@ -14,11 +14,10 @@ import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useHistory } from 'react-router-dom';
+import auth0 from 'auth0-js';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const history = useHistory();
   const [openAccountMenu, setOpenAccountMenu] = React.useState(false);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -26,7 +25,20 @@ export default function AccountMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setOpenAccountMenu(false);
   };
+  const logOutAccount = () => {
+    var auth0Client = new auth0.WebAuth({
+      domain: "sakari-dev.auth0.com",
+      clientID: "070uGm11ljol0xyKlEAIG8FhmdZMOnJN"
+    });
+
+    auth0Client.logout({
+      returnTo: 'http://localhost:3000',
+      clientID: "070uGm11ljol0xyKlEAIG8FhmdZMOnJN"
+    });
+  }
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -86,7 +98,7 @@ export default function AccountMenu() {
           Settings
         </MenuItem>
 
-        <MenuItem onClick={() => history.push('/')}>
+        <MenuItem onClick={logOutAccount}>
           <ListItemIcon >
             <Logout fontSize="small" />
           </ListItemIcon>

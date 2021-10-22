@@ -29,7 +29,7 @@ export default function ChatButtons() {
 
   const classes = useStyles();
   return (
-    <><Hidden smUp={true}>
+    <><Hidden mdUp={true}>
       <MenuItem >
         <Tooltip title="Tokens" placement="top">
           <IconButton className={classes.navlink}> <VpnKey  />  </IconButton></Tooltip>
@@ -46,7 +46,7 @@ export default function ChatButtons() {
       </MenuItem>
 
     </Hidden>
-      <Hidden smDown={true}>
+      <Hidden mdDown={true}>
         <Tooltip title="Tokens" placement="top">
           <IconButton className={classes.navlink}> <VpnKey  />  </IconButton>
           </Tooltip>

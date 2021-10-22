@@ -155,13 +155,13 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                                     <ListItemIcon>
                                         <Badge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                             badgeContent={getStatusIcon(c.type)}                                        >
-                                            <Avatar style={{ width: "52px", height: "52px" }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                                            <Avatar style={{ width: "52px", height: "52px", }} alt="Travis Howard" src="/static/images/avatar/2.jpg" />
                                         </Badge>
                                     </ListItemIcon>
                                 </ListItemAvatar>
                                 <ListItemText className="user-name">
                                     <Grid container>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={12} style={{paddingLeft:'10px'}}>
                                             <Box style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
                                                 {c.block && (<Block style={{ fontSize: "13px", marginRight: "3px" }} color="error" />)}
                                                 {c.archive === true && c.showArchive === true && (<LockOutlined style={{ fontSize: "13px", marginRight: "3px", color: blueTheme.palette.grey[500] }} />)}
@@ -177,7 +177,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
                                                 </div>
                                             </Box>
 
-                                            <Box className="textMessage" component="div" sx={{
+                                            <Box className="textMessage"  component="div" sx={{
                                                 // textOverflow: 'ellipsis',
                                                 // overflow: 'hidden',
                                             }}>

@@ -17,7 +17,7 @@ const Master = () => {
         <>
             {location.pathname !== "/" &&
                 <>
-                    <AppBar position="fixed" style={{ zIndex: 9 }} className="appBarHeader" elevation={0} >
+                    <AppBar position="fixed" style={{ zIndex: 9999 }} className="appBarHeader" elevation={0} >
                         <Toolbar style={{ paddingLeft: 16, paddingRight: 16 }}>
                             <Hidden smDown={true}>
                                 <Link to={"/inbox"}>

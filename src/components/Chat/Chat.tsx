@@ -51,7 +51,7 @@ const Chat = (props: any) => {
             return contact.mobile.mnumber;
         }
     };
-    alert(open);
+    
     return (
 
         <Box className="chat-grid">
@@ -64,7 +64,7 @@ const Chat = (props: any) => {
                     }}
                 >
                     <Box >
-                        <Hidden smUp={true} > <IconButton onClick={handleConversationList} ><ArrowBackIos /></IconButton></Hidden>
+                        <Hidden smUp={true} > <IconButton onClick={handleConversationList} ><ArrowBackIos color="primary" /></IconButton></Hidden>
                     </Box>
 
                     <Box style={{

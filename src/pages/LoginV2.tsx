@@ -179,26 +179,22 @@ export default function LoginV2() {
     }
 
     if (isValid) {
-      const domain = 'dev-res9arij.us.auth0.com';
-      /*  const accessToken = await getAccessTokenSilently({
-         audience: `https://${domain}/api/v2/`,
-         scope: "read:current_user",
-       }); */
-
-
       auth0Client.client.login({
-        realm: 'react-user-demo',
+        realm: '',
         username: email,
         password
-      }, (err:any, authResult:any) => {
+      }, (err: any, authResult: any) => {
         if (err) {
-         console.log("error", err)
+          console.log("error", err)
           return
         }
         if (authResult) {
+          console.log(authResult);
+          localStorage.setItem("accessToken", authResult.accessToken)
           history.push('/inbox');
         }
       })
+
 
 
     }
