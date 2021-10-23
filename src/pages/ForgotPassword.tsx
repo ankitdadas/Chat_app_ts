@@ -243,7 +243,7 @@ export default function ForgotPassword() {
 
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                      <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
+                      <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">  
                         <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">Email Address</InputLabel>
                         <OutlinedInput onChange={(e) => {
                           setEmail(e.target.value);

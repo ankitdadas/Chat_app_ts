@@ -263,7 +263,7 @@ export default function LoginV2() {
                       <FormControl error={passwordError.length > 0 ? true : false} fullWidth variant="outlined">
                         <InputLabel
 
-                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}
+                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}  
                           htmlFor="standard-adornment-password">Password</InputLabel>
                         <OutlinedInput
                           id="standard-adornment-password"

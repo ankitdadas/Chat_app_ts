@@ -246,7 +246,7 @@ export default function ForgotPassword() {
                         <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
                           <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">First Name</InputLabel>
                           <OutlinedInput id="FirstName" />
-                          <FormHelperText id="component-error-text">{emailError}</FormHelperText>
+                          <FormHelperText id="component-error-text">{emailError}</FormHelperText>  
                         </FormControl>
                       </Grid>
 
