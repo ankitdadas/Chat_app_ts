@@ -2,6 +2,8 @@ import React from 'react';
 import './App.scss';
 import Master from "./components/hoc/Master";
 import LoginV2 from "./pages/LoginV2";
+import ForgotPassword from "./pages/ForgotPassword";
+import SignUp from "./pages/Signup";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
 import LoginButton from './components/LoginButton';
@@ -18,7 +20,7 @@ function App() {
         <Router>
           <Master />
           <Switch>
-            <Route exact path="/" component={LoginV2} />
+            <Route exact path="/" component={SignUp} />
           </Switch>
         </Router>
       </div>
