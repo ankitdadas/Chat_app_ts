@@ -245,17 +245,7 @@ export default function ForgotPassword() {
                       <Grid item xs={6}>
                         <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
                           <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">First Name</InputLabel>
-                          <OutlinedInput onChange={(e) => {
-                            setEmail(e.target.value);
-                            setEmailError('');
-                            if (e.target.value.length === 0) {
-                              setEmailError('Email is required');
-
-                            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)) {
-                              setEmailError('Email is not valid');
-
-                            }
-                          }} id="standard-adornment-EmailAddress" />
+                          <OutlinedInput id="FirstName" />
                           <FormHelperText id="component-error-text">{emailError}</FormHelperText>
                         </FormControl>
                       </Grid>
@@ -263,17 +253,7 @@ export default function ForgotPassword() {
                       <Grid item xs={6}>
                         <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
                           <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">Last Name</InputLabel>
-                          <OutlinedInput onChange={(e) => {
-                            setEmail(e.target.value);
-                            setEmailError('');
-                            if (e.target.value.length === 0) {
-                              setEmailError('Email is required');
-
-                            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)) {
-                              setEmailError('Email is not valid');
-
-                            }
-                          }} id="standard-adornment-EmailAddress" />
+                          <OutlinedInput   id="LastName" />
                           <FormHelperText id="component-error-text">{emailError}</FormHelperText>
                         </FormControl>
                       </Grid>
