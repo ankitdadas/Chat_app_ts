@@ -8,13 +8,14 @@ import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import LogoIcon from '../../src/assets/sakari-logo.png';
-import LoginImage from '../../src/assets/LoginImagev2.svg';
+import SignUp from '../../src/assets/SignUp.svg';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, FormHelperText } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { Visibility } from '@mui/icons-material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useAuth0 } from "@auth0/auth0-react";
 import auth0 from 'auth0-js';
 const useStyles = makeStyles({
@@ -136,7 +137,7 @@ const useStyles = makeStyles({
 
 });
 
-export default function LoginV2() {
+export default function ForgotPassword() {
   const { user, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   var auth0Client = new auth0.WebAuth({
     domain: "dev-res9arij.us.auth0.com",
@@ -211,7 +212,7 @@ export default function LoginV2() {
           <Grid container className={clsx(classes.loginBoxContainerGrid, 'loginBoxContainerGrid')}>
             <Grid item lg={6} md={6} sm={12} xs={12} style={{ background: "#7793bb", }} alignItems="center">
               <Box className={clsx(classes.loginBoxLeft, 'loginBoxLeft')}  >
-                <img alt="Logo" src={LoginImage} />
+                <img alt="Logo" src={SignUp} />
               </Box>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12} alignItems="center" style={{ position: "relative" }}>
@@ -233,14 +234,33 @@ export default function LoginV2() {
 
 
                 <Typography component="h2" variant="h2">
-                  Welcome Back !
+                  Create Account !
                 </Typography>
                 <Typography component="h5" variant="h5">
-                  We missed you. Don't have an account yet? <Link href="/"> SignUP</Link>
+                  Create account with just simple email and password or <Link href="/"> Login</Link>
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
-                  <Grid container spacing={2}>
+                <Grid container spacing={2} style={{marginBottom:15}}>
+                      <Grid item xs={6}>
+                        <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
+                          <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">First Name</InputLabel>
+                          <OutlinedInput id="FirstName" />
+                          <FormHelperText id="component-error-text">{emailError}</FormHelperText>  
+                        </FormControl>
+                      </Grid>
+
+                      <Grid item xs={6}>
+                        <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
+                          <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">Last Name</InputLabel>
+                          <OutlinedInput   id="LastName" />
+                          <FormHelperText id="component-error-text">{emailError}</FormHelperText>
+                        </FormControl>
+                      </Grid>
+                    </Grid>
+
+                  <Grid container spacing={2}>                 
+
                     <Grid item xs={12}>
                       <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
                         <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">Email Address</InputLabel>
@@ -258,12 +278,14 @@ export default function LoginV2() {
                         <FormHelperText id="component-error-text">{emailError}</FormHelperText>
                       </FormControl>
                     </Grid>
+                    
 
+                   
                     <Grid item xs={12}>
                       <FormControl error={passwordError.length > 0 ? true : false} fullWidth variant="outlined">
                         <InputLabel
 
-                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}  
+                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}
                           htmlFor="standard-adornment-password">Password</InputLabel>
                         <OutlinedInput
                           id="standard-adornment-password"
@@ -290,25 +312,52 @@ export default function LoginV2() {
                         />
                         <FormHelperText id="component-error-text">{passwordError}</FormHelperText>
                       </FormControl>
-
-
                     </Grid>
 
                     <Grid item xs={12}>
-                      <Link href="#" variant="body2">
-                        I forgot my password?
-                      </Link>
+                      <FormControl error={passwordError.length > 0 ? true : false} fullWidth variant="outlined">
+                        <InputLabel
+
+                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}
+                          htmlFor="standard-adornment-password">Confirm Password</InputLabel>
+                        <OutlinedInput
+                          id="standard-adornment-password"
+                          type={passwordVisibility === true ? "text" : "password"}
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                            setPasswordError('');
+                            if (e.target.value.length === 0) {
+                              setPasswordError('Password is required');
+
+                            }
+                          }}
+
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={() => setPasswordVisibility(!passwordVisibility)}
+                                aria-label="toggle password visibility"
+                              >
+                                {passwordVisibility === false ? <VisibilityOffIcon /> : <Visibility />}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                        />
+                        <FormHelperText id="component-error-text">{passwordError}</FormHelperText>
+                      </FormControl>
                     </Grid>
+                   
+                   
 
                     <Grid item xs={12}>
                       <Button
                         type="submit"
-                        size="large"
+                        size="large"                       
                         variant="contained"
                         style={{ minWidth: 150 }}
 
                       >
-                        Login
+                        Create Account
                       </Button>
                     </Grid>
                   </Grid>
@@ -316,12 +365,7 @@ export default function LoginV2() {
               </Box>
             </Grid>
           </Grid>
-
-
         </Container>
-
-
-
       </Box>
     </>
   );

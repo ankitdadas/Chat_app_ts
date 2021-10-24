@@ -8,13 +8,14 @@ import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import LogoIcon from '../../src/assets/sakari-logo.png';
-import LoginImage from '../../src/assets/LoginImagev2.svg';
+import ForgotPasssword from '../../src/assets/Forgot_password.svg';
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, FormHelperText } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { Visibility } from '@mui/icons-material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useAuth0 } from "@auth0/auth0-react";
 import auth0 from 'auth0-js';
 const useStyles = makeStyles({
@@ -136,7 +137,7 @@ const useStyles = makeStyles({
 
 });
 
-export default function LoginV2() {
+export default function ForgotPassword() {
   const { user, loginWithRedirect, getAccessTokenSilently } = useAuth0();
   var auth0Client = new auth0.WebAuth({
     domain: "dev-res9arij.us.auth0.com",
@@ -211,7 +212,7 @@ export default function LoginV2() {
           <Grid container className={clsx(classes.loginBoxContainerGrid, 'loginBoxContainerGrid')}>
             <Grid item lg={6} md={6} sm={12} xs={12} style={{ background: "#7793bb", }} alignItems="center">
               <Box className={clsx(classes.loginBoxLeft, 'loginBoxLeft')}  >
-                <img alt="Logo" src={LoginImage} />
+                <img alt="Logo" src={ForgotPasssword} />
               </Box>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12} alignItems="center" style={{ position: "relative" }}>
@@ -233,16 +234,16 @@ export default function LoginV2() {
 
 
                 <Typography component="h2" variant="h2">
-                  Welcome Back !
+                 Forgot Password !
                 </Typography>
                 <Typography component="h5" variant="h5">
-                  We missed you. Don't have an account yet? <Link href="/"> SignUP</Link>
+                  you will get Reset link to registered mail id or <Link href="/"> SignUP</Link>
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                      <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">
+                      <FormControl error={emailError.length > 0 ? true : false} fullWidth variant="outlined">  
                         <InputLabel style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }} htmlFor="standard-adornment-EmailAddress">Email Address</InputLabel>
                         <OutlinedInput onChange={(e) => {
                           setEmail(e.target.value);
@@ -259,44 +260,11 @@ export default function LoginV2() {
                       </FormControl>
                     </Grid>
 
-                    <Grid item xs={12}>
-                      <FormControl error={passwordError.length > 0 ? true : false} fullWidth variant="outlined">
-                        <InputLabel
-
-                          style={{ background: "#fff", paddingLeft: 5, paddingRight: 5 }}  
-                          htmlFor="standard-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                          id="standard-adornment-password"
-                          type={passwordVisibility === true ? "text" : "password"}
-                          onChange={(e) => {
-                            setPassword(e.target.value);
-                            setPasswordError('');
-                            if (e.target.value.length === 0) {
-                              setPasswordError('Password is required');
-
-                            }
-                          }}
-
-                          endAdornment={
-                            <InputAdornment position="end">
-                              <IconButton
-                                onClick={() => setPasswordVisibility(!passwordVisibility)}
-                                aria-label="toggle password visibility"
-                              >
-                                {passwordVisibility === false ? <VisibilityOffIcon /> : <Visibility />}
-                              </IconButton>
-                            </InputAdornment>
-                          }
-                        />
-                        <FormHelperText id="component-error-text">{passwordError}</FormHelperText>
-                      </FormControl>
-
-
-                    </Grid>
+                    
 
                     <Grid item xs={12}>
-                      <Link href="#" variant="body2">
-                        I forgot my password?
+                      <Link href="./login" variant="body2" style={{display:"flex", alignItems:"center"}}>
+                        <KeyboardBackspaceIcon  style={{marginRight:"10px"}} /> Back to Login
                       </Link>
                     </Grid>
 
@@ -304,11 +272,12 @@ export default function LoginV2() {
                       <Button
                         type="submit"
                         size="large"
+                        fullWidth
                         variant="contained"
                         style={{ minWidth: 150 }}
 
                       >
-                        Login
+                        Reset Password
                       </Button>
                     </Grid>
                   </Grid>
