@@ -19,11 +19,13 @@
   .message-block {
     border-radius: 5px;
     padding:10px 16px !important;
-    margin-bottom: 20px !important;
+    margin: 5px auto !important;
     display: flex;
     position: relative;
     color:#000;
     cursor: pointer;
+    background:#ededed;
+    max-width: 89.5%;
     &:before{
       position: absolute;
       top: 50%;
@@ -31,22 +33,25 @@
       content: " ";
       height: 20px;
       width: 3px;
-      background-color: #fff;
+      background-color: #ededed;
       margin-top: -10px;
     }
+    @media #{$smallscreens} {
+      max-width: 100%;
+       
+    }
+
+
     }
 
     .message-block.active{
-      box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+      box-shadow: 0px 0px 7px rgb(105 112 117 / 62%);
       background: #fff;
       &:before{
         background-color: #0078CE;
       }
     }
 
-     
-
-  
   .message-block {
     .MuiListItem-gutters {
       padding: 0px 5px 0px 0px;
@@ -70,8 +75,7 @@
       letter-spacing: 0px;
     }
   }
-
-  
+ 
   .message-block2 {
     .MuiListItemText-root {
       border-radius: none;
@@ -80,14 +84,6 @@
       padding: 0px 16px 0px 0px;
     }
   }
-
-  
-
- 
-  
-  
- 
-
 
 .textMessage{
   width: 100%; 
@@ -104,18 +100,11 @@
   display: inline-block;
   right: 0px;
   margin-left: 2px;
-  
-}
+  }
 
 .dot-offline {
   background-color: #7D92A1;
 }
-
-
- 
- 
- 
-
 .whatsApp {
   color: #ffffff;
   align-items: center;
@@ -126,7 +115,6 @@ width: 12.5px;
 left: 130.5px;
 top: 242px;
 border-radius: 0px;
-
 }
 
 .height-conversation > div{
@@ -152,9 +140,6 @@ border-radius: 0px;
     font-size: 30px;
     color: #ffffff;
 }
-
- 
-
 .avatar-icon {
   height: 25px !important;
   width: 25px !important;
@@ -168,22 +153,16 @@ border-radius: 0px;
 }
 
 
-
-
-
-
-
-
-
-
 .conversationBox{
   background: #F8FAFB;
   height: auto;
   padding: 0px 0px 0px 1px;
   position: relative;
-  flex-grow: auto;
+  flex-grow: auto; 
   width: 100%;
   max-width: 320px;
+  border-right: 1px  #e0e0e0 solid;
+  padding-right:3px;
   @media #{$smallscreens} {
     max-width: 100%;
     padding: 10px 0px 0px 1px;

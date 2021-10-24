@@ -24,9 +24,12 @@ import { makeStyles, useTheme } from '@mui/styles';
 
 const useStyles: any = makeStyles(() => ({
     cancelBtn: {
-        background: ` ${blueTheme.palette.error.main} !important`,
+        background: ` ${blueTheme.palette.grey[700]} !important`,
+        color:` ${blueTheme.palette.grey[800]} !important`,
+        marginRight:"10px",
         "&:hover":{
-            background:` ${blueTheme.palette.error.dark} !important`,
+            background:` ${blueTheme.palette.grey[900]} !important`,
+            color: ` ${blueTheme.palette.grey[800]} !important`,
         }
     },
     
@@ -119,7 +122,7 @@ const ConversationList = ({ setSelectedUserId, selectedUserId, showarchiveChat, 
             <Grid item xs={12}>
                 <Paper elevation={0}
                     component="form" style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10, marginTop: 0 }}
-                    sx={{ p: '0px 4px', display: 'flex', alignItems: 'center', }}
+                    sx={{ p: '0px 4px 0px 0px', display: 'flex', alignItems: 'center', }}
                 >
                     <Searchbox setUsers={setUsers} />
                     <IconButton sx={{ p: '10px' }} aria-label="directions">

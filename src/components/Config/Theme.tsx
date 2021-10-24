@@ -9,7 +9,8 @@ export const blueTheme = createMuiTheme({
       500:'#008080',  // color for archive 
       600:'#008080', // color for archive Hover
       700: '#cccccc', // color for left nav 
-      800: '#000000',  // color for left nav  hover    
+      800: '#000000',  // color for left nav  hover   
+      900: '#ededed',  // color for left nav  hover    
     },
     
     secondary: {
@@ -19,7 +20,7 @@ export const blueTheme = createMuiTheme({
     },
     primary: {
       main: '#0078CE',
-      dark: '#1a79bd',
+      dark: '#309fef',
       contrastText: '#fff',
     },
     error: {
